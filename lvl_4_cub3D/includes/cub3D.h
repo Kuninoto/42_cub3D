@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/02 19:24:39 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/02 22:15:00 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ typedef struct s_textures {
 }				t_textures;
 
 typedef struct s_cub3d {
-	void	*mlx_ptr;
-	void	*win_ptr;
-
-	t_img	canvas;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_textures	textures;
+	char		**map;
+	t_img		canvas;
 }				t_cub3d;
 
 bool	valid_args(int argc, char **argv);

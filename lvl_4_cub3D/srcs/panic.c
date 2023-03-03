@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   panic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:32:26 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/02 18:43:02 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/03 20:49:11 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "libcub3D.h"
 
 void	panic(char *error_msg, t_cub3d *this)
 {

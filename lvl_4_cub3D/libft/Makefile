@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I../includes
+CFLAGS = -Wall -Wextra -Werror -I../includes 
 VPATH = conversions debug_utils ft_printf memory string
 RM = rm -rf
 NAME = libft.a

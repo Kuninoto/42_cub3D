@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g # -Ofast
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g # -Ofast
 MLX_FLAGS = -L ./mlx -lmlx -Ilmlx -lXext -lX11
 LIBFT = ./libft/libft.a
 LINK = -I./includes
@@ -7,9 +7,9 @@ VPATH = srcs srcs/parser
 RM = rm -rf
 NAME = cub3D
 
-TEST_FILE = scenes/subject.cub
+TEST_FILE = scenes/alter.cub
 
-PARSER = parse_scene
+PARSER = parse_scene parse_textures
 GENERAL = valid_args destroy panic put_error\
 		  main
 

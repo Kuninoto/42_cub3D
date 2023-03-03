@@ -1,14 +1,16 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g # -Ofast
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g # -Ofast
 MLX_FLAGS = -L ./mlx -lmlx -Ilmlx -lXext -lX11
 LIBFT = ./libft/libft.a
 LINK = -I./includes
-VPATH = srcs 
+VPATH = srcs srcs/parser
 RM = rm -rf
 NAME = cub3D
 
-PARSER = valid_args
-GENERAL = destroy panic put_error\
+TEST_FILE = scenes/subject.cub
+
+PARSER = parse_scene
+GENERAL = valid_args destroy panic put_error\
 		  main
 
 SRCS = $(addsuffix .c, $(PARSER))\
@@ -42,11 +44,11 @@ re: fclean all
 
 run: re
 	echo ""
-	./$(NAME)
+	./$(NAME) $(TEST_FILE)
 
 noleaks: re
 	echo ""
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(TEST_FILE)
 
 .SILENT:
 

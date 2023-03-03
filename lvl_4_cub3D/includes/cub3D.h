@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/02 22:15:00 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:24:58 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,20 @@
 
 # include "libft.h"
 # include "math.h"
-# include "keys.h"
+# include "events.h"
 # include "img.h"
 # include "../mlx/mlx.h"
 
 /* ERROR MESSAGES */
 
-# define MLX_INIT_ERR "mlx_init() fail"
 # define INVALID_ARGC "invalid number of arguments"
 # define INVALID_MAP_EXT "invalid map file extension"
+
+# define OPEN_SCENE_ERR "failed to open scene's file"
+# define EMPTY_SCENE_ERR "scene's file is empty"
+# define MAP_HAS_EMPTY_LINES "scene's map has empty lines"
+
+# define MLX_INIT_ERR "mlx_init() fail"
 
 /* CONSTANTS */
 
@@ -46,7 +51,28 @@ typedef struct s_cub3d {
 	t_img		canvas;
 }				t_cub3d;
 
+static inline void	init_cub3d(t_cub3d *this)
+{
+	this->mlx_ptr = NULL;
+	this->win_ptr = NULL;
+	this->textures.north = NULL;
+	this->textures.south = NULL;
+	this->textures.east = NULL;
+	this->textures.west = NULL;
+	this->map = NULL;
+	this->canvas = init_img();
+}
+
 bool	valid_args(int argc, char **argv);
+
+bool	parse_scene(t_cub3d *this, char *file_name);
+
+static inline int parser_panic(char *error_msg) {
+	ft_putstr_fd("cub3D: error: parser: ", STDERR_FILENO);
+	ft_putendl_fd(error_msg, STDERR_FILENO);
+	return (0);
+};
+
 
 void	destroy(t_cub3d *this);
 void	panic(char *error_msg, t_cub3d *this);

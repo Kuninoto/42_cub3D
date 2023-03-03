@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   valid_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:29:10 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/02 19:19:48 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/03 20:48:45 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "libcub3D.h"
 
 static inline int arg_error(char *error_msg) {
 	put_error(error_msg);

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 20:44:02 by roramos           #+#    #+#             */
-/*   Updated: 2023/03/03 20:45:40 by roramos          ###   ########.fr       */
+/*   Created: 2023/03/04 19:34:03 by nnuno-ca          #+#    #+#             */
+/*   Updated: 2023/03/04 19:34:04 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef DATA_H
+# define DATA_H
 
 # include "img.h"
 
@@ -24,12 +24,18 @@ typedef struct s_textures {
 	void	*west;
 }				t_textures;
 
-typedef struct s_cub3d {
+typedef struct s_coords {
+	size_t	x;
+	size_t	y;
+}				t_coords;
+
+typedef struct s_data {
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_textures	textures;
 	char		**map;
 	t_img		canvas;
-}				t_cub3d;
+	t_coords	player;
+}				t_data;
 
-#endif // CUB3D_H
+#endif // DATA_H

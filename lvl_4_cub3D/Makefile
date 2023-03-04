@@ -7,7 +7,7 @@ VPATH = srcs srcs/parser
 RM = rm -rf
 NAME = cub3D
 
-TEST_FILE = scenes/alter.cub
+TEST_FILE = scenes/invalid/unclosed.cub
 
 PARSER = parse_scene parse_textures
 GENERAL = valid_args destroy panic put_error\
@@ -42,11 +42,11 @@ fclean: clean
 
 re: fclean all
 
-run: re
+run: fclean all
 	echo ""
 	./$(NAME) $(TEST_FILE)
 
-noleaks: re
+noleaks: fclean all
 	echo ""
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(TEST_FILE)
 

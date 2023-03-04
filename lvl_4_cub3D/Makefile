@@ -9,7 +9,7 @@ NAME = cub3D
 
 TEST_FILE = scenes/alter.cub
 
-PARSER = parse_textures parse_map parse_scene
+PARSER = parse_textures parse_map parse_scene #save_player_position
 GENERAL = valid_args destroy panic put_error\
 		  main
 

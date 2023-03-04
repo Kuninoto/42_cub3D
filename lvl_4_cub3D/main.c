@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/03 20:49:17 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/04 19:34:51 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libcub3D.h"
 
-int	quit_cub3d(t_cub3d *this)
+int	quit_cub3d(t_data *this)
 {
 	destroy(this);
 	exit(EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
 }
 
-int	on_keypress(int key, t_cub3d *this)
+int	on_keypress(int key, t_data *this)
 {
 	printf("keypress code = %d\n", key);
 	if (key == ESC)
@@ -42,7 +42,7 @@ int	on_keypress(int key, t_cub3d *this)
 	return (EXIT_SUCCESS);
 }
 
-int	on_mousepress(int button, t_cub3d *this)
+int	on_mousepress(int button, t_data *this)
 {
 	(void)this;
 	printf("mousepress code = %d\n", button);
@@ -58,12 +58,13 @@ int	on_mousepress(int button, t_cub3d *this)
 
 int main(int argc, char **argv)
 {
-	t_cub3d	this;
+	t_data	this;
 
 	if (!valid_args(argc, argv))
 		panic(NULL, NULL);
 	init_cub3d(&this);
-	parse_scene(&this, argv[1]);
+	if (!parse_scene(&this, argv[1]))
+		panic(NULL, &this);
 
 
 	/* this.mlx_ptr = mlx_init();

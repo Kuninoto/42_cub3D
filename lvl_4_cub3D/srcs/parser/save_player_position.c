@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_args.c                                       :+:      :+:    :+:   */
+/*   save_player_position.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 18:29:10 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/04 19:13:28 by nnuno-ca         ###   ########.fr       */
+/*   Created: 2023/03/04 19:30:25 by nnuno-ca          #+#    #+#             */
+/*   Updated: 2023/03/04 19:44:29 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libcub3D.h"
+# include "parser.h"
 
-static inline int	arg_error(char *error_msg)
+bool	save_player_position(char **map, t_data *this)
 {
-	put_error(error_msg);
-	return (0);
-}
+	int	i;
+	int	j;
 
-bool	valid_args(int argc, char **argv)
-{
-	size_t	idx;
-
-	if (argc != 2)
-		return (arg_error(INVALID_ARGC));
-	idx = ft_strlen(argv[1]) - EXTENSION_LEN;
-	if (!streq(&argv[1][idx], ".cub"))
-		return (arg_error(INVALID_MAP_EXT));
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			
+		}
+	}
 	return (true);
 }

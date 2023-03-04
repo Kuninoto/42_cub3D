@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 19:37:56 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/04 18:21:18 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/04 19:39:15 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,23 +103,23 @@ static bool	is_scene_empty(char *file_name)
 	return (return_value);
 }
 
-bool	parse_scene(t_cub3d *this, char *file_name)
+bool	parse_scene(t_data *this, char *file_name)
 {
-	int		scene_fd;
 	bool	return_value;
+	int		scene_fd;
 	char	**textures_part;
 	char 	**map_part;
 
+	return_value = true;
 	scene_fd = open(file_name, O_RDONLY);
 	if (scene_fd == -1)
 		return (parser_panic(OPEN_SCENE_ERR));
-	return_value = true;
 	if (is_scene_empty(file_name))
 		return (parser_panic(EMPTY_SCENE_ERR));
 	textures_part = get_textures_part(scene_fd);
 	if (!parse_textures(this, textures_part))
 		return_value = false;
-	if (return_value == true)
+	if (return_value != false)
 	{
 		map_part = get_map_part(file_name, scene_fd);
 		if (!parse_map(map_part))
@@ -128,23 +128,30 @@ bool	parse_scene(t_cub3d *this, char *file_name)
 			return_value = false;	
 		}
 	}
-
-	printf("NO: %p\n", this->textures.north);
+	/* if (return_value != false)
+	{
+		this->map = map_part;
+		if (!save_player_position())
+		{
+			
+		}
+	}
+ */
+	/* printf("NO: %p\n", this->textures.north);
 	printf("SO: %p\n", this->textures.south);
 	printf("WE: %p\n", this->textures.west);
 	printf("EA: %p\n", this->textures.east);
 	printf("Floor RGB: %d,%d,%d\n", this->textures.floor_rgb[0],this->textures.floor_rgb[1],this->textures.floor_rgb[2]);
 	printf("Sky RGB: %d,%d,%d\n", this->textures.sky_rgb[0],this->textures.sky_rgb[1],this->textures.sky_rgb[2]);
 
-	if (return_value == true)
+	if (return_value != false)
 	{
 		printf("\nTEXTURES_PART\n");
 		print_char_matrix(textures_part);
 		printf("\nMAP_PART\n");
 		print_char_matrix(map_part);
-	}
-	if (return_value != false)
-		this->map = map_part;
+	} */
+
 	close(scene_fd);
 	free_matrix(textures_part);
 	return (return_value);

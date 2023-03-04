@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 13:36:17 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/04 18:20:03 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/04 19:35:08 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 # define PARSER_H
 
 # include "libft.h"
-# include "cub3D.h"
+# include "data.h"
 
 // ERROR MESSAGES -------------------------------------------------
 
 # define INVALID_ARGC "invalid number of arguments"
 # define INVALID_MAP_EXT "invalid map file extension"
 
-# define OPEN_SCENE_ERR "failed to open scene's file"
+# define OPEN_SCENE_ERR "failed to open scene file"
+# define OPEN_TEXTURE_ERR "failed to open xpm file"
 # define INVALID_NBR_OF_ATTRIBUTES "exceeded amount of element attributes"
-# define OPEN_TEXTURE_ERR "mlx_xpm_file_to_image() failed to open xpm file"
 # define INVALID_RGB_VALUES "invalid RGB values"
 # define RGB_OUT_OF_BOUNDS "RGB value out of bounds [0, 255]"
 # define EMPTY_SCENE_ERR "scene's file is empty"
@@ -49,7 +49,7 @@ static inline int parser_panic(char *error_msg) {
 };
 
 bool	parse_map(char **map_part);
-bool	parse_textures(t_cub3d *this, char **map);
-bool	parse_scene(t_cub3d *this, char *file_name);
+bool	parse_textures(t_data *this, char **map);
+bool	parse_scene(t_data *this, char *file_name);
 
 #endif // PARSER_H

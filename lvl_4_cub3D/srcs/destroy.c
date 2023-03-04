@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:54:19 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/03 21:47:11 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/04 19:39:24 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	destroy_textures(void *mlx_ptr, t_textures *textures)
 		mlx_destroy_image(mlx_ptr, textures->west);
 }
 
-void	destroy(t_cub3d *this)
+void	destroy(t_data *this)
 {
 	if (!this)
 		return ;

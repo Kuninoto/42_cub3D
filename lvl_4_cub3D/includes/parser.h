@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 13:36:17 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/03 20:57:09 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/04 00:01:14 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define RGB_OUT_OF_BOUNDS "RGB value out of bounds [0, 255]"
 # define EMPTY_SCENE_ERR "scene's file is empty"
 # define MAP_HAS_EMPTY_LINES "scene's map has empty lines"
+# define NOT_SURROUNDED_BY_WALLS "scene's map is not surrounded by walls ('1')"
+# define INVALID_MAP_COMPOSURE "scene's map is wrongly composed\nThis error occurs due to a misconfiguration on the map"
 
 // CONSTANTS ------------------------------------------------------
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 19:37:56 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/04 00:41:08 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/04 18:21:18 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,21 @@
 static size_t	get_nbr_map_lines(char *file_name)
 {
 	int 	scene_fd;
+	size_t	i;
 	size_t	count;
 	char	*line;
 
 	scene_fd = open(file_name, O_RDONLY);
+	i = 0;
 	count = 0;
 	line = get_next_line(scene_fd);
-	while (line)
+	while (i < 6)
 	{
 		free(line);
 		line = get_next_line(scene_fd);
-		if (line == NULL)
-			return (0);
-		if (line[0] == ' ' || line[0] == '0' || line[0] == '1')
-			break ;
+		if (!only_spaces(line))
+			i += 1;
 	}
-	count += 1;
 	while (line)
 	{
 		if (!only_spaces(line))
@@ -62,6 +61,7 @@ static char **get_textures_part(int scene_fd)
 		i += 1;
 	}
 	scene[i] = NULL;
+	free(get_next_line(scene_fd));
 	return (scene);
 }
 
@@ -74,7 +74,6 @@ static char	**get_map_part(char *file_name, int scene_fd)
 
 	nbr_lines = get_nbr_map_lines(file_name);
 	map = malloc((nbr_lines + 1) * sizeof(char *));
-	printf("nbr lines = %ld\n", nbr_lines);
 	i = 0;
 	while (i < nbr_lines)
 	{
@@ -84,37 +83,6 @@ static char	**get_map_part(char *file_name, int scene_fd)
 	}
 	map[i] = NULL;
 	return (map);
-}
-
-static inline bool	valid_boundaries(char *map_line)
-{
-	size_t	i;
-
-	i = 0;
-	while (is_spaces(map_line[i]))
-		i += 1;
-	if (map_line[i] != '1')
-		return (parser_panic(NOT_SURROUNDED_BY_WALLS));
-	i = ft_strlen(map_line) - 1;
-	if (map_line[i] != '1')
-		return (parser_panic(NOT_SURROUNDED_BY_WALLS));
-	return (true);
-}
-
-bool	valid_map(char **map_part)
-{
-	size_t	i;
-
-	i = 0;
-	while (map_part[i])
-	{
-		if (only_spaces(map_part[i]))
-			return (parser_panic(MAP_HAS_EMPTY_LINES));
-		if (!valid_boundaries(map_part[i]))
-			return (false);
-		i += 1;	
-	}
-	return (true);
 }
 
 static bool	is_scene_empty(char *file_name)
@@ -131,6 +99,7 @@ static bool	is_scene_empty(char *file_name)
 	if (temp == NULL)
 		return_value = true;
 	free(temp);
+	close(scene_fd);
 	return (return_value);
 }
 
@@ -150,14 +119,14 @@ bool	parse_scene(t_cub3d *this, char *file_name)
 	textures_part = get_textures_part(scene_fd);
 	if (!parse_textures(this, textures_part))
 		return_value = false;
-
-	// NOT READING THE MAP CORRECTLY
-	map_part = get_map_part(file_name, scene_fd);
-	if (!valid_map(map_part))
+	if (return_value == true)
 	{
-		print_char_matrix(map_part);
-		free_matrix(map_part);
-		return_value = false;	
+		map_part = get_map_part(file_name, scene_fd);
+		if (!parse_map(map_part))
+		{
+			free_matrix(map_part);
+			return_value = false;	
+		}
 	}
 
 	printf("NO: %p\n", this->textures.north);
@@ -167,14 +136,16 @@ bool	parse_scene(t_cub3d *this, char *file_name)
 	printf("Floor RGB: %d,%d,%d\n", this->textures.floor_rgb[0],this->textures.floor_rgb[1],this->textures.floor_rgb[2]);
 	printf("Sky RGB: %d,%d,%d\n", this->textures.sky_rgb[0],this->textures.sky_rgb[1],this->textures.sky_rgb[2]);
 
-	print_char_matrix(textures_part);
 	if (return_value == true)
+	{
+		printf("\nTEXTURES_PART\n");
+		print_char_matrix(textures_part);
+		printf("\nMAP_PART\n");
 		print_char_matrix(map_part);
-
-	free_matrix(textures_part);
-
+	}
 	if (return_value != false)
 		this->map = map_part;
 	close(scene_fd);
+	free_matrix(textures_part);
 	return (return_value);
 }

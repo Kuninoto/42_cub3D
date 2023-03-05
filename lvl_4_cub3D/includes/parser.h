@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 13:36:17 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/04 19:35:08 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/05 23:01:54 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@
 # define INVALID_MAP_COMPOSURE "scene's map is wrongly composed"
 # define VALID_INSIDE_MAP "0NSEW"
 # define VALID_ELEMENT_SURROUNDING "01NSEW"
+# define POSSIBLE_PLAYER_CHARS "NSEW"
+# define INVALID_NBR_PLAYER_POSITIONS "more than one player's start position"
+# define NO_PLAYER_START_POINT "no player's start position"
 
 // CONSTANTS ------------------------------------------------------
 
@@ -48,7 +51,8 @@ static inline int parser_panic(char *error_msg) {
 	return (0);
 };
 
-bool	parse_map(char **map_part);
+bool	save_player_position(char **map, t_data *this);
+bool	parse_map(char **map_part, t_data *this);
 bool	parse_textures(t_data *this, char **map);
 bool	parse_scene(t_data *this, char *file_name);
 

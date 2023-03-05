@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:19:46 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/03 15:30:11 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/05 23:38:20 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@
 # define LEFT_CLICK 1
 # define WHEEL_CLICK 2
 # define RIGHT_CLICK 3
-# define BUTTONPRESS_EVENT 4
+# define SCROLL_UP 4
+# define SCROLL_DOWN 5
 
 # define DESTROY_NOTIFY_EVENT 17
 

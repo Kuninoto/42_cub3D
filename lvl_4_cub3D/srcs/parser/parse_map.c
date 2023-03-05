@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:09:06 by roramos           #+#    #+#             */
-/*   Updated: 2023/03/04 19:31:24 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/05 22:54:58 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ static bool	has_walls(char **map)
 	return (true);
 }
 
-bool	parse_map(char **map_part)
+bool	parse_map(char **map_part, t_data *this)
 {
-	if (!has_walls(map_part) || !valid_content(map_part))
+	if (!has_walls(map_part) || !valid_content(map_part) || !save_player_position(map_part, this))
 		return (false);
 	return (true);
 }

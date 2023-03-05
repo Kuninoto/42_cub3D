@@ -7,9 +7,9 @@ VPATH = srcs srcs/parser
 RM = rm -rf
 NAME = cub3D
 
-TEST_FILE = scenes/alter.cub
+TEST_FILE = scenes/invalid/unknown_char.cub
 
-PARSER = parse_textures parse_map parse_scene #save_player_position
+PARSER = parse_textures parse_map parse_scene save_player_position
 GENERAL = valid_args destroy panic put_error\
 		  main
 

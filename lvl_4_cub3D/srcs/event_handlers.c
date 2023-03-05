@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:16:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/05 23:18:28 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/05 23:42:03 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,13 @@ int	on_keypress(int key, t_data *this)
 	return (EXIT_SUCCESS);
 }
 
-int	on_mousepress(int button, t_data *this)
+int	mouse_handler(int button, int x, int y, t_data *this)
 {
 	(void)this;
 	printf("mousepress code = %d\n", button);
+	printf("Mouse Position\n");
+	printf("x: %d\n", x);
+	printf("y: %d\n", y);
 	/* if (button == LEFT_CLICK)
 		shoot();
 	else if (button == WHEEL_CLICK)

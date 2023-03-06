@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 00:47:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/01/22 14:06:46 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/06 01:05:18 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*clean_printed(char	*global_buffer)
 
 	i = 0;
 	while (global_buffer[i] && global_buffer[i] != '\n')
-		i++;
+		i += 1;
 	if (!global_buffer[i])
 	{
 		free(global_buffer);
@@ -29,7 +29,7 @@ static char	*clean_printed(char	*global_buffer)
 	new = malloc(((ft_strlen(global_buffer) - i) + 1) * sizeof(char));
 	if (!new)
 		return (NULL);
-	i++;
+	i += 1;
 	j = 0;
 	while (global_buffer[i])
 		new[j++] = global_buffer[i++];
@@ -49,14 +49,14 @@ static char	*get_line(char *global_buffer)
 	if (!global_buffer[i])
 		return (NULL);
 	while (global_buffer[len] && global_buffer[len] != '\n')
-		len++;
+		len += 1;
 	line = malloc((len + 2) * sizeof(char));
 	if (!line)
 		return (NULL);
 	while (i <= len)
 	{
 		line[i] = global_buffer[i];
-		i++;
+		i += 1;
 	}
 	line[i] = '\0';
 	return (line);
@@ -123,7 +123,7 @@ char	*get_next_line(int fd)
 	static char	*global_buffer[FOPEN_MAX];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
+	if (BUFFER_SIZE <= 0 || fd < 0 || fd > FOPEN_MAX)
 		return (NULL);
 	global_buffer[fd] = read_buffsize(fd, global_buffer[fd]);
 	if (!global_buffer[fd])

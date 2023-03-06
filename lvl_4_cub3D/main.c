@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/05 23:41:56 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/06 01:12:17 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int main(int argc, char **argv)
 	init_cub3d(&this);
 	if (!parse_scene(&this, argv[1]))
 		panic(NULL, &this);
-
 	this.win_ptr = mlx_new_window(this.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3D");
+	if (!this.win_ptr)
+		panic(WIN_INIT_ERR, &this);
 
 	mlx_hook(this.win_ptr, KEYPRESS_EVENT, (1L << 0), on_keypress, &this);
 	mlx_mouse_hook(this.win_ptr, mouse_handler, &this);

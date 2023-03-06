@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/05 23:34:57 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/06 01:00:16 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 
 /* ERROR MESSAGES */
 
-# define MLX_INIT_ERR "mlx_init() fail"
+# define MLX_INIT_ERR "mlx_init() failed"
+# define WIN_INIT_ERR "mlx_new_window() failed"
 
 /* CONSTANTS */
 

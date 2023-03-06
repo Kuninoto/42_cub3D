@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g # -Ofast
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g # -Ofast
 MLX_FLAGS = -L ./mlx -lmlx -Ilmlx -lXext -lX11
 LIBFT = ./libft/libft.a
 LINK = -I./includes
@@ -7,7 +7,7 @@ VPATH = srcs srcs/parser
 RM = rm -rf
 NAME = cub3D
 
-TEST_FILE = scenes/alter.cub
+TEST_FILE = scenes/invalid/empty.cub
 
 PARSER = parse_textures parse_map parse_scene save_player_position
 GENERAL = valid_args event_handlers destroy panic put_error\
@@ -36,11 +36,14 @@ $(OBJ_DIR)/%.o: %.c
 
 clean:
 	$(RM) $(OBJ_DIR) $(OBJS) 
+	$(MAKE) clean -C ./libft
 
 fclean: clean
 	$(RM) $(NAME)
+	$(MAKE) fclean -C ./libft
 
 re: fclean all
+	$(MAKE) re -C ./libft
 
 run: fclean all
 	echo ""

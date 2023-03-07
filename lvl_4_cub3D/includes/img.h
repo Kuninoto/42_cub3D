@@ -6,14 +6,18 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:53:37 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/05 23:17:42 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/07 01:40:01 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMG_H
 # define IMG_H
 
-# include "../mlx/mlx.h"
+#ifdef OS_LINUX
+	# include "../mlx_linux/mlx.h"
+#else
+	# include "../mlx_macos/mlx.h"
+#endif // OS_LINUX
 
 // WINDOW DIMENSIONS
 

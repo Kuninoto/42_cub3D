@@ -1,0 +1,448 @@
+
+[46;30mtest_W1.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_W2.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_W3.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_W4.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_W5.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_W6.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_W7.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC1.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC2.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC3.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC4.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC5.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC6.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC7.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC8.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC9.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC10.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC11.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC12.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC13.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_FC14.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP1.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP2.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP3.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP4.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP5.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP6.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP7.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP8.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP9.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP10.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP11.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP12.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP13.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP14.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP15.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP16.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP17.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP18.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP19.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP20.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP21.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP22.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP23.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP24.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP25.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP26.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP27.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP28.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP29.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP30.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP31.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP32.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP33.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP34.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_MAP35.cub[m
+
+total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+
+[46;30mtest_W1.cub[m
+
+total heap usage: 153 allocs, 151 frees, 102,347 bytes allocated
+
+[46;30mtest_W2.cub[m
+
+total heap usage: 344 allocs, 342 frees, 111,318 bytes allocated
+
+[46;30mtest_W3.cub[m
+
+total heap usage: 139 allocs, 137 frees, 102,122 bytes allocated
+
+[46;30mtest_W4.cub[m
+
+total heap usage: 138 allocs, 136 frees, 102,154 bytes allocated
+
+[46;30mtest_W5.cub[m
+
+total heap usage: 296 allocs, 294 frees, 109,133 bytes allocated
+
+[46;30mtest_W6.cub[m
+
+total heap usage: 294 allocs, 292 frees, 109,741 bytes allocated
+
+[46;30mtest_W7.cub[m
+
+total heap usage: 281 allocs, 279 frees, 109,045 bytes allocated
+
+[46;30mtest_FC1.cub[m
+
+total heap usage: 357 allocs, 355 frees, 111,492 bytes allocated
+
+[46;30mtest_FC2.cub[m
+
+total heap usage: 358 allocs, 356 frees, 111,497 bytes allocated
+
+[46;30mtest_FC3.cub[m
+
+total heap usage: 358 allocs, 356 frees, 111,497 bytes allocated
+
+[46;30mtest_FC4.cub[m
+
+total heap usage: 358 allocs, 356 frees, 111,497 bytes allocated
+
+[46;30mtest_FC5.cub[m
+
+total heap usage: 336 allocs, 334 frees, 111,206 bytes allocated
+
+[46;30mtest_FC6.cub[m
+
+total heap usage: 335 allocs, 333 frees, 111,197 bytes allocated
+
+[46;30mtest_FC7.cub[m
+
+total heap usage: 358 allocs, 356 frees, 112,109 bytes allocated
+
+[46;30mtest_FC8.cub[m
+
+total heap usage: 357 allocs, 355 frees, 111,491 bytes allocated
+
+[46;30mtest_FC9.cub[m
+
+total heap usage: 357 allocs, 355 frees, 111,495 bytes allocated
+
+[46;30mtest_FC10.cub[m
+
+total heap usage: 357 allocs, 355 frees, 111,499 bytes allocated
+
+[46;30mtest_FC11.cub[m
+
+total heap usage: 352 allocs, 350 frees, 111,446 bytes allocated
+
+[46;30mtest_FC12.cub[m
+
+total heap usage: 334 allocs, 332 frees, 111,190 bytes allocated
+
+[46;30mtest_FC13.cub[m
+
+total heap usage: 338 allocs, 336 frees, 111,231 bytes allocated
+
+[46;30mtest_FC14.cub[m
+
+total heap usage: 337 allocs, 335 frees, 111,207 bytes allocated
+
+[46;30mtest_MAP1.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP2.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP3.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP4.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP5.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP6.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP7.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP8.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP9.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP10.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP11.cub[m
+
+total heap usage: 335 allocs, 333 frees, 111,186 bytes allocated
+
+[46;30mtest_MAP12.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP13.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP14.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP15.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+
+[46;30mtest_MAP16.cub[m
+
+total heap usage: 147 allocs, 145 frees, 101,813 bytes allocated
+
+[46;30mtest_MAP17.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,120 bytes allocated
+
+[46;30mtest_MAP18.cub[m
+
+total heap usage: 654 allocs, 653 frees, 157,755 bytes allocated
+
+[46;30mtest_MAP19.cub[m
+
+total heap usage: 336 allocs, 334 frees, 111,182 bytes allocated
+
+[46;30mtest_MAP20.cub[m
+
+total heap usage: 344 allocs, 342 frees, 111,255 bytes allocated
+
+[46;30mtest_MAP21.cub[m
+
+total heap usage: 515 allocs, 515 frees, 127,154 bytes allocated
+
+[46;30mtest_MAP22.cub[m
+
+total heap usage: 515 allocs, 515 frees, 127,154 bytes allocated
+
+[46;30mtest_MAP23.cub[m
+
+total heap usage: 515 allocs, 515 frees, 127,154 bytes allocated
+
+[46;30mtest_MAP24.cub[m
+
+total heap usage: 515 allocs, 515 frees, 127,154 bytes allocated
+
+[46;30mtest_MAP25.cub[m
+
+total heap usage: 521 allocs, 521 frees, 128,907 bytes allocated
+
+[46;30mtest_MAP26.cub[m
+
+total heap usage: 521 allocs, 521 frees, 128,907 bytes allocated
+
+[46;30mtest_MAP27.cub[m
+
+total heap usage: 521 allocs, 521 frees, 128,907 bytes allocated
+
+[46;30mtest_MAP28.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,268 bytes allocated
+
+[46;30mtest_MAP29.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,283 bytes allocated
+
+[46;30mtest_MAP30.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,268 bytes allocated
+
+[46;30mtest_MAP31.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,275 bytes allocated
+
+[46;30mtest_MAP32.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,268 bytes allocated
+
+[46;30mtest_MAP33.cub[m
+
+total heap usage: 521 allocs, 521 frees, 129,268 bytes allocated
+
+[46;30mtest_MAP34.cub[m
+
+total heap usage: 528 allocs, 527 frees, 130,827 bytes allocated
+
+[46;30mtest_MAP35.cub[m
+
+total heap usage: 387 allocs, 332 frees, 111,316 bytes allocated

@@ -1,13 +1,22 @@
+OS = $(shell uname)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g # -Ofast
-MLX_FLAGS = -L ./mlx -lmlx -Ilmlx -lXext -lX11
+
+ifeq ($(OS), Linux)
+	CFLAGS += -D OS_LINUX
+	MLX_FLAGS = -L ./mlx_linux -lmlx -Ilmlx_linux -lXext -lX11 -lbsd
+else
+	CFLAGS += -D OS_MACOS
+	MLX_FLAGS = -L ./mlx_macos -lmlx -framework OpenGL -framework AppKit
+endif
+
 LIBFT = ./libft/libft.a
 LINK = -I./includes
 VPATH = srcs srcs/parser
 RM = rm -rf
 NAME = cub3D
 
-TEST_FILE = scenes/invalid/empty.cub
+TEST_FILE = scenes/alter.cub
 
 PARSER = parse_textures parse_map parse_scene save_player_position
 GENERAL = valid_args event_handlers destroy panic put_error\
@@ -22,7 +31,12 @@ OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS) $(LIBFT)
-	$(MAKE) -C ./mlx
+	$(info Compiling Cub3D for $(OS))
+ifeq ($(OS), Linux)
+	$(MAKE) -C ./mlx_linux
+else
+	$(MAKE) -C ./mlx_macos
+endif
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_FLAGS) -lm -o $(NAME)
 
 $(LIBFT):
@@ -55,4 +69,4 @@ noleaks: fclean all
 
 .SILENT:
 
-.PHONY: all cub3D clean fclean re
+.PHONY: all cub3D clean fclean re obj

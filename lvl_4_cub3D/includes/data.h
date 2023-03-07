@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:34:03 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/05 22:59:34 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:08:43 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define DATA_H
 
 # include "img.h"
+# include "vector2.h"
 
 typedef struct s_textures {
 	int		sky_rgb[3];
@@ -25,8 +26,7 @@ typedef struct s_textures {
 }				t_textures;
 
 typedef struct s_player {
-	size_t	x;
-	size_t	y;
+	t_vec2	position;
 	char	orientation;
 }				t_player;
 
@@ -37,6 +37,7 @@ typedef struct s_data {
 	char		**map;
 	t_img		canvas;
 	t_player	player;
+	t_vec2		direction;
 }				t_data;
 
 #endif // DATA_H

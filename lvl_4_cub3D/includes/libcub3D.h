@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/06 01:00:16 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/07 01:39:33 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 # define LIBCUB3D_H
 
 # include "libft.h"
-# include "../mlx/mlx.h"
+
+#ifdef OS_LINUX
+	# include "../mlx_linux/mlx.h"
+#else
+	# include "../mlx_macos/mlx.h"
+#endif // OS_LINUX
+
 # include "math.h"
 # include "data.h"
 # include "parser.h"

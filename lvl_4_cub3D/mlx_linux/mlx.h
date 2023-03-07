@@ -32,21 +32,23 @@
 #define	MLX_H
 
 
-void	*mlx_init();
 /*
-**  needed before everything else.
-**  return (void *)0 if failed
+*	Initializes mlx_ptr;
+*   return NULL in case of failure
 */
+void	*mlx_init();
 
 
 /*
 ** Basic actions
 */
 
-void	*mlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title);
 /*
-**  return void *0 if failed
+*	Initializes a window and returns a win_ptr;
+*	return NULL in case of failure
 */
+void	*mlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title);
+
 int	mlx_clear_window(void *mlx_ptr, void *win_ptr);
 int	mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color);
 /*
@@ -62,7 +64,7 @@ int	mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color);
 
 void	*mlx_new_image(void *mlx_ptr,int width,int height);
 /*
-**  return void *0 if failed
+**  return NULL if failed
 **  obsolete : image2 data is stored using bit planes
 **  void	*mlx_new_image2(void *mlx_ptr,int width,int height);
 */

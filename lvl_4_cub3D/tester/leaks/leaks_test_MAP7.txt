@@ -1,0 +1,15 @@
+==17030== Memcheck, a memory error detector
+==17030== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17030== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==17030== Command: ../cub3D ./maps/test_MAP7.cub
+==17030== Parent PID: 16613
+==17030== 
+==17030== 
+==17030== HEAP SUMMARY:
+==17030==     in use at exit: 0 bytes in 0 blocks
+==17030==   total heap usage: 521 allocs, 521 frees, 129,114 bytes allocated
+==17030== 
+==17030== All heap blocks were freed -- no leaks are possible
+==17030== 
+==17030== For lists of detected and suppressed errors, rerun with: -s
+==17030== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

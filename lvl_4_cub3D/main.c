@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/06 01:12:17 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:33:05 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int main(int argc, char **argv)
 		panic(WIN_INIT_ERR, &this);
 
 	mlx_hook(this.win_ptr, KEYPRESS_EVENT, (1L << 0), on_keypress, &this);
-	mlx_mouse_hook(this.win_ptr, mouse_handler, &this);
+	mlx_mouse_hook(this.win_ptr, on_mouseclick, &this);
+	mlx_hook(this.win_ptr, MOTION_NOTIFY, (1L << 6), mouse_handler, &this);
 	mlx_hook(this.win_ptr, DESTROY_NOTIFY_EVENT, (1L << 17), quit_cub3d, &this);
 
 	mlx_loop(this.mlx_ptr);

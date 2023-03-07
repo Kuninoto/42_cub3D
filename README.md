@@ -15,7 +15,8 @@
 
 ## Useful links
 (TO READ)  
-  
+https://lodev.org/cgtutor/raycasting.html  
+https://en.wikipedia.org/wiki/Ray_casting  
 
 (READ)  
 https://www.tutorialspoint.com/c_standard_library/math_h.htm  

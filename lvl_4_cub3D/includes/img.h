@@ -21,7 +21,7 @@
 
 // WINDOW DIMENSIONS
 
-# define WIN_WIDTH 1080
+# define WIN_WIDTH 1280
 # define WIN_HEIGHT 920
 
 /* img represents a canvas to which we'll draw 

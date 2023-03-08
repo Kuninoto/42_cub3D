@@ -49,6 +49,10 @@ static inline void	init_cub3d(t_data *this)
 	this->textures.south = NULL;
 	this->textures.east = NULL;
 	this->textures.west = NULL;
+	this->camera.camera_plane_x = 0;
+	this->camera.camera_plane_y = 0.66;
+	this->camera.direction_x = 0;
+	this->camera.direction_y = 0;
 	this->map = NULL;
 	this->canvas = init_img();
 }

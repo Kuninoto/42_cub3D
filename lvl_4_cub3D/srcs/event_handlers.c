@@ -65,6 +65,15 @@ int	mouse_handler(int x, int y, t_data *this)
 	printf("Mouse Position\n");
 	printf("x: %d\n", x);
 	printf("y: %d\n", y);
+
+
+	double oldDirX = this->camera.direction_x;
+	this->camera.direction_x = this->camera.direction_x * cos(-4) - this->camera.direction_y * sin(-4);
+	this->camera.direction_y = oldDirX * sin(-4) + this->camera.direction_y * cos(-4);
+	double oldPlaneX = this->camera.camera_plane_x;
+	this->camera.camera_plane_x = this->camera.camera_plane_x * cos(-4) - this->camera.camera_plane_y * sin(-4);
+	this->camera.camera_plane_y = oldPlaneX * sin(-4) + this->camera.camera_plane_y * cos(-4);
+
 	/* if (button == LEFT_CLICK)
 		shoot();
 	else if (button == WHEEL_CLICK)

@@ -30,6 +30,15 @@ typedef struct s_player {
 	char	orientation;
 }				t_player;
 
+typedef struct s_camera
+{
+	double direction_x;
+	double direction_y;
+	double camera_plane_x;
+	double camera_plane_y;
+
+} 				t_camera;
+
 typedef struct s_data {
 	void		*mlx_ptr;
 	void		*win_ptr;
@@ -37,6 +46,7 @@ typedef struct s_data {
 	char		**map;
 	t_img		canvas;
 	t_player	player;
-}				t_data;
+	t_camera	camera;
+} t_data;
 
 #endif // DATA_H

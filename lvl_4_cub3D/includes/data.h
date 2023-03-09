@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:34:03 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/05 22:59:34 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/09 12:24:05 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_textures {
 }				t_textures;
 
 typedef struct s_player {
-	size_t	x;
-	size_t	y;
+	double	x;
+	double	y;
 	char	orientation;
 }				t_player;
 

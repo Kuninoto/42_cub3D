@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/07 01:39:33 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/09 12:17:28 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,12 @@ static inline void	init_cub3d(t_data *this)
 	this->textures.west = NULL;
 	this->camera.camera_plane_x = 0;
 	this->camera.camera_plane_y = 0.66;
-	this->camera.direction_x = 0;
-	this->camera.direction_y = 0;
+	this->camera.direction_x = -1.0f;
+	this->camera.direction_y = 0.0f;
 	this->map = NULL;
 	this->canvas = init_img();
 }
+
+int a(void *param);
 
 #endif // LIBCUB3D_H

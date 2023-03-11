@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/11 23:28:52 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/11 23:49:45 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,30 @@ void verLine(t_data *this, size_t x, size_t drawStart, size_t drawEnd, size_t co
 	size_t i;
 
 	i = 0;
-	while (drawStart + i < drawEnd)
+	while (i < drawStart)
+	{
+		put_pixel_in_canvas(&this->canvas, x, i, 
+			create_trgb(256, this->textures.sky_rgb[0], this->textures.sky_rgb[1],
+			this->textures.sky_rgb[2]));
+		i += 1;
+	}
+	while (i < drawEnd)
 	{
 		mlx_pixel_put(this->mlx_ptr, this->win_ptr, x, drawStart + i, color);
 		i += 1;
 	}
+	while (i < WIN_HEIGHT)
+	{
+		put_pixel_in_canvas(&this->canvas, x, i, 
+			create_trgb(256, this->textures.floor_rgb[0], this->textures.sky_rgb[1],
+			this->textures.floor_rgb[2]));
+		i += 1;
+	}
 }
 
-int a(void *param)
+int a(t_data *this)
 {
-	t_data *this = param;
+	this->canvas = new_img(this->mlx_ptr);
 
 	for (int x = 0; x < WIN_WIDTH; x += 1)
 	{
@@ -122,10 +136,10 @@ int a(void *param)
 		if (drawEnd >= WIN_HEIGHT)
 			drawEnd = WIN_HEIGHT - 1;
 
-//		double	step;
+/* 		double	step;
 		double	wallx;
 		double	texx;
-//		double	texpos;
+		double	texpos;
 
 		if (side == 0)
 			wallx = this->player.y + perpWallDist * rayDirY;
@@ -137,11 +151,13 @@ int a(void *param)
 			texx = TEXTURE_HEIGHT - texx - 1;
 		if (side == 1 && rayDirY < 0)
 			texx = TEXTURE_HEIGHT - texx - 1;
-//		step = 1.0 * TEXTURE_HEIGHT / lineHeight;
-//		texpos = (drawStart - WIN_HEIGHT / 2 + lineHeight / 2) * step;
+		step = 1.0 * TEXTURE_HEIGHT / lineHeight;
+		texpos = (drawStart - WIN_HEIGHT / 2 + lineHeight / 2) * step; */
 
 		verLine(this, x, drawStart, drawEnd, create_trgb(100,255,255,255));
 	}
+
+	mlx_put_image_to_window(this->mlx_ptr, this->win_ptr, this->canvas.img_ptr, 0, 0);
 	return (EXIT_SUCCESS);
 }
 
@@ -159,11 +175,13 @@ int main(int argc, char **argv)
 		panic(WIN_INIT_ERR, &this);
 
 	a(&this);
+
 	mlx_hook(this.win_ptr, KEYPRESS_EVENT, (1L << 0), on_keypress, &this);
 	mlx_mouse_hook(this.win_ptr, on_mouseclick, &this);
 	mlx_hook(this.win_ptr, MOTION_NOTIFY, (1L << 6), mouse_handler, &this);
 	mlx_hook(this.win_ptr, DESTROY_NOTIFY_EVENT, (1L << 17), quit_cub3d, &this);
-	// mlx_loop_hook(this.mlx_ptr, a, &this);
+
+//	mlx_loop_hook(this.mlx_ptr, a, &this);
 
 	mlx_loop(this.mlx_ptr);
 

@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 19:37:56 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/09 12:48:04 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/11 23:44:15 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ bool	parse_scene(t_data *this, char *file_name)
 		this->map = map_part;
 
 
-	if (return_value != false)
+/* 	if (return_value != false)
 	{
 		printf("NO: %p\n", this->textures.north);
 		printf("SO: %p\n", this->textures.south);
@@ -147,7 +147,7 @@ bool	parse_scene(t_data *this, char *file_name)
 		printf("\nPLAYER'S START POSITION\n");
 		printf("Player's start position: y: %.1f x: %.1f\n", this->player.y, this->player.x);
 		printf("Orientation: %c\n", this->player.orientation);
-	}
+	} */
 
 	close(scene_fd);
 	free_matrix(textures_part);

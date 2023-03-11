@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:16:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/11 23:28:52 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/11 23:50:41 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	on_keypress(int key, t_data *this)
 		quit_cub3d(this);
 	else if (key == W || key == UP)
 	{
+		mlx_destroy_image(this->mlx_ptr, this->canvas.img_ptr);
 		mlx_clear_window(this->mlx_ptr, this->win_ptr);
 		if (this->map[(int)(this->player.y + this->camera.dir_y * movespeed)][(int)(this->player.x)] == OPEN_SPACE)
 			this->player.x += this->camera.dir_x * movespeed;
@@ -43,6 +44,7 @@ int	on_keypress(int key, t_data *this)
 	}
 	else if (key == A || key == LEFT)
 	{
+		mlx_destroy_image(this->mlx_ptr, this->canvas.img_ptr);
 		mlx_clear_window(this->mlx_ptr, this->win_ptr);
 		this->camera.dir_x = this->camera.dir_x * cos(rotspeed) - this->camera.dir_y * sin(rotspeed);
 		this->camera.dir_y = old_dir_x * sin(rotspeed) + this->camera.dir_y * cos(rotspeed);
@@ -52,6 +54,7 @@ int	on_keypress(int key, t_data *this)
 	}
 	else if (key == S || key == DOWN)
 	{
+		mlx_destroy_image(this->mlx_ptr, this->canvas.img_ptr);
 		mlx_clear_window(this->mlx_ptr, this->win_ptr);
 		if (this->map[(int)(this->player.y - this->camera.dir_y * movespeed)][(int)(this->player.y)] == OPEN_SPACE)
 			this->player.x -= this->camera.dir_x * movespeed;
@@ -61,6 +64,7 @@ int	on_keypress(int key, t_data *this)
 	}
 	else if (key == D || key == RIGHT)
 	{
+		mlx_destroy_image(this->mlx_ptr, this->canvas.img_ptr);
 		mlx_clear_window(this->mlx_ptr, this->win_ptr);
 		this->camera.dir_x = this->camera.dir_x * cos(-rotspeed) - this->camera.dir_y * sin(-rotspeed);
 		this->camera.dir_y = old_dir_x * sin(-rotspeed) + this->camera.dir_y * cos(-rotspeed);

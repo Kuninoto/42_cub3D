@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/11 23:28:52 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/11 23:34:01 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ static inline void	init_cub3d(t_data *this)
 	this->canvas = init_img();
 }
 
-int a(void *param);
+int a(t_data *this);
 
 #endif // LIBCUB3D_H

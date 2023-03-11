@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:53:37 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/09 23:34:37 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/11 23:39:54 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static inline t_img	new_img(void *mlx_ptr) {
 								&new_img.endian);
 	return (new_img);
 };
-
 
 static inline void	put_pixel_in_canvas(t_img *img, int x, int y, int color) 
 {

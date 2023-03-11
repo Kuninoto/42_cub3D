@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:53:37 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/07 01:40:01 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/09 23:34:37 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 920
+
+# define TEXTURE_WIDTH 64
+# define TEXTURE_HEIGHT 64
 
 /* img represents a canvas to which we'll draw 
 	to then put that canvas(img) to the window */

@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:34:03 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/09 12:24:05 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/11 23:29:25 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 
 # include "img.h"
 
-typedef struct s_textures {
+# define WALL '1'
+# define OPEN_SPACE '0'
+
+typedef struct s_textures
+{
 	int		sky_rgb[3];
 	int		floor_rgb[3];	
 	void	*north;
@@ -24,7 +28,8 @@ typedef struct s_textures {
 	void	*west;
 }				t_textures;
 
-typedef struct s_player {
+typedef struct s_player
+{
 	double	x;
 	double	y;
 	char	orientation;
@@ -32,14 +37,14 @@ typedef struct s_player {
 
 typedef struct s_camera
 {
-	double direction_x;
-	double direction_y;
-	double camera_plane_x;
-	double camera_plane_y;
-
+	double dir_x;
+	double dir_y;
+	double plane_x;
+	double plane_y;
 } 				t_camera;
 
-typedef struct s_data {
+typedef struct s_data
+{
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_textures	textures;
@@ -47,6 +52,6 @@ typedef struct s_data {
 	t_img		canvas;
 	t_player	player;
 	t_camera	camera;
-} t_data;
+} 				t_data;
 
 #endif // DATA_H

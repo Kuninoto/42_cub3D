@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/09 13:00:50 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/11 23:28:52 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int a(void *param)
 	for (int x = 0; x < WIN_WIDTH; x += 1)
 	{
 		// calculate ray position and direction
-		double 	cameraX = 2 * x / ((double)WIN_WIDTH) - 1; // x-coordinate in camera space
-		double 	rayDirX = this->camera.direction_x + this->camera.camera_plane_x * cameraX;
-		double 	rayDirY = this->camera.direction_y + this->camera.camera_plane_y * cameraX;
+		double 	cameraX = 2 * x / (double)WIN_WIDTH - 1; // x-coordinate in camera space
+		double 	rayDirX = this->camera.dir_x + this->camera.plane_x * cameraX;
+		double 	rayDirY = this->camera.dir_y + this->camera.plane_y * cameraX;
 
 		// x and y start position
 		int		posX = this->player.x;
@@ -52,8 +52,8 @@ int a(void *param)
 		double 	sideDistY;
 
 		// length of ray from one x or y-side to next x or y-side
-		double 	deltaDistX = sqrt(1 + (rayDirY * rayDirY) / (rayDirX * rayDirX));
-		double	deltaDistY = sqrt(1 + (rayDirX * rayDirX) / (rayDirY * rayDirY));
+		double 	deltaDistX = fabs(1 / rayDirX);
+		double	deltaDistY = fabs(1 / rayDirY);
 		double 	perpWallDist;
 
 		// what direction to step in x or y-direction (either +1 or -1)
@@ -82,7 +82,7 @@ int a(void *param)
 		else
 		{
 			stepY = 1;
-			sideDistY = (mapY + 1.0 - posY) * deltaDistY;
+			sideDistY = (mapY + 1.0f - posY) * deltaDistY;
 		}
 
 		// perform DDA
@@ -107,9 +107,9 @@ int a(void *param)
 		}
 
 		if (!side)
-			perpWallDist = (sideDistX - deltaDistX);
+			perpWallDist = (mapX - posX + (1 - stepX) / 2) / rayDirX;
 		else
-			perpWallDist = (sideDistY - deltaDistY);
+			perpWallDist = (mapY - posY + (1 - stepY) / 2) / rayDirY;
 
 		// Calculate height of line to draw on screen
 		int lineHeight = (int)(WIN_HEIGHT / perpWallDist);
@@ -120,7 +120,25 @@ int a(void *param)
 			drawStart = 0;
 		int drawEnd = lineHeight / 2 + WIN_HEIGHT / 2;
 		if (drawEnd >= WIN_HEIGHT)
-			drawEnd = WIN_HEIGHT- 1;
+			drawEnd = WIN_HEIGHT - 1;
+
+//		double	step;
+		double	wallx;
+		double	texx;
+//		double	texpos;
+
+		if (side == 0)
+			wallx = this->player.y + perpWallDist * rayDirY;
+		else
+			wallx = this->player.x + perpWallDist * rayDirX;
+		wallx -= floor(wallx);
+		texx = (int)(wallx * (double)TEXTURE_WIDTH);
+		if (side == 0 && rayDirX > 0)
+			texx = TEXTURE_HEIGHT - texx - 1;
+		if (side == 1 && rayDirY < 0)
+			texx = TEXTURE_HEIGHT - texx - 1;
+//		step = 1.0 * TEXTURE_HEIGHT / lineHeight;
+//		texpos = (drawStart - WIN_HEIGHT / 2 + lineHeight / 2) * step;
 
 		verLine(this, x, drawStart, drawEnd, create_trgb(100,255,255,255));
 	}

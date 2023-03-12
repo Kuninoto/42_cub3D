@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/11 23:34:01 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/12 01:58:49 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 	# include "../mlx_macos/mlx.h"
 #endif // OS_LINUX
 
-# include "math.h"
+# include <stdint.h>
+# include <math.h>
 # include "data.h"
 # include "parser.h"
 # include "event_handlers.h"

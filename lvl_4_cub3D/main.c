@@ -6,17 +6,43 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/11 23:49:45 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/12 02:04:49 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libcub3D.h"
 
+# define WHITE 0xFFFAFA
+# define BLACK 0x000000
+
+void	draw_minimap(t_data *this)
+{
+	int x;
+	int	y;
+	int	map_length;
+
+	y = 0;
+	while (y < this->map_height)
+	{
+		x = 0;
+		map_length = ft_strlen(this->map[y]);
+		while (x < map_length)
+		{
+			if (this->map[y][x] == WALL)
+				put_pixel_in_canvas(&this->canvas, (x * 10), (y * 10), WHITE);
+			else
+				put_pixel_in_canvas(&this->canvas, (x * 10), (y * 10), BLACK);
+			x += 1;
+		}
+		y += 1;
+	}
+}
+
 int create_trgb(int t, int r, int g, int b) {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void verLine(t_data *this, size_t x, size_t drawStart, size_t drawEnd, size_t color)
+void draw_vertical_line(t_data *this, size_t x, size_t drawStart, size_t drawEnd, size_t color)
 {
 	size_t i;
 
@@ -136,28 +162,52 @@ int a(t_data *this)
 		if (drawEnd >= WIN_HEIGHT)
 			drawEnd = WIN_HEIGHT - 1;
 
-/* 		double	step;
+		double	step;
 		double	wallx;
-		double	texx;
+		int		texx;
 		double	texpos;
 
 		if (side == 0)
-			wallx = this->player.y + perpWallDist * rayDirY;
+			wallx = posY + perpWallDist * rayDirY;
 		else
-			wallx = this->player.x + perpWallDist * rayDirX;
+			wallx = posX + perpWallDist * rayDirX;
 		wallx -= floor(wallx);
+
 		texx = (int)(wallx * (double)TEXTURE_WIDTH);
 		if (side == 0 && rayDirX > 0)
-			texx = TEXTURE_HEIGHT - texx - 1;
+			texx = TEXTURE_WIDTH - texx - 1;
 		if (side == 1 && rayDirY < 0)
-			texx = TEXTURE_HEIGHT - texx - 1;
+			texx = TEXTURE_WIDTH - texx - 1;
+
 		step = 1.0 * TEXTURE_HEIGHT / lineHeight;
-		texpos = (drawStart - WIN_HEIGHT / 2 + lineHeight / 2) * step; */
+		texpos = (drawStart - WIN_HEIGHT / 2 + lineHeight / 2) * step;
+		
+		uint32_t color;
+		for (int y = drawStart; y < drawEnd; y += 1)
+      	{
+			int texy = (int)texpos & (TEXTURE_HEIGHT - 1);
 
-		verLine(this, x, drawStart, drawEnd, create_trgb(100,255,255,255));
+    	    texpos += step;
+			if (!side)
+			{
+				if (posX > mapX)
+					color = this->textures.north[TEXTURE_HEIGHT * texy + texx];
+				else
+					color = this->textures.south[TEXTURE_HEIGHT * texy + texx];
+			}
+			else
+			{
+				if (posY > mapY)
+					color = this->textures.west[TEXTURE_HEIGHT * texy + texx];
+				else
+					color = this->textures.east[TEXTURE_HEIGHT * texy + texx];
+			}
+        	put_pixel_in_canvas(&this->canvas, x, y, color);
+		}
+		draw_vertical_line(this, x, drawStart, drawEnd, create_trgb(100,255,255,255));
 	}
-
-	mlx_put_image_to_window(this->mlx_ptr, this->win_ptr, this->canvas.img_ptr, 0, 0);
+	draw_minimap(this);
+	mlx_put_image_to_window(this->mlx_ptr, this->win_ptr, this->canvas.ptr, 0, 0);
 	return (EXIT_SUCCESS);
 }
 

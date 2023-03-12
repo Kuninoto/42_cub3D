@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:54:19 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/12 01:31:23 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:54:40 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	destroy(t_data *this)
 		mlx_destroy_window(this->mlx_ptr, this->win_ptr);
 	if (this->mlx_ptr)
 	{
-		//mlx_destroy_display(this->mlx_ptr);
+		mlx_destroy_display(this->mlx_ptr);
 		free(this->mlx_ptr);
 	}
 	if (this->map)

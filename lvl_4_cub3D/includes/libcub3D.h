@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/12 01:58:49 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:51:54 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ static inline void	init_cub3d(t_data *this)
 	this->canvas = init_img();
 }
 
+static inline int create_trgb(int t, int r, int g, int b) {
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
 void a(t_data *this);
+void move_player(t_data *this);
 
 #endif // LIBCUB3D_H

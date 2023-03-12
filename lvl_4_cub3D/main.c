@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/12 02:04:49 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:59:31 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,6 @@ void	draw_minimap(t_data *this)
 		}
 		y += 1;
 	}
-}
-
-int create_trgb(int t, int r, int g, int b) {
-	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 void draw_vertical_line(t_data *this, size_t x, size_t drawStart, size_t drawEnd, size_t color)
@@ -168,16 +164,16 @@ void a(t_data *this)
 		int		texx;
 		double	texpos;
 
-		if (side == 0)
+		if (!side)
 			wallx = (int)posY + perpWallDist * rayDirY;
 		else
 			wallx = (int)posX + perpWallDist * rayDirX;
 		wallx -= floor(wallx);
 
 		texx = (int)(wallx * (double)TEXTURE_WIDTH);
-		if (side == 0 && rayDirX > 0)
+		if (!side && rayDirX > 0)
 			texx = TEXTURE_WIDTH - texx - 1;
-		if (side == 1 && rayDirY < 0)
+		if (side && rayDirY < 0)
 			texx = TEXTURE_WIDTH - texx - 1;
 
 		step = 1.0 * TEXTURE_HEIGHT / lineHeight;
@@ -203,7 +199,8 @@ void a(t_data *this)
 				else
 					color = this->textures.east[TEXTURE_HEIGHT * texy + texx];
 			}
-			put_pixel_in_canvas(&this->canvas, x, y, create_trgb(100, 255, 255, 255));
+			color = WHITE; //create_trgb(100, 255, 255, 255);
+			put_pixel_in_canvas(&this->canvas, x, y, color);
 		}
 		//draw_vertical_line(this, x, drawStart, drawEnd, create_trgb(100,150,30,255));
 	}
@@ -212,48 +209,16 @@ void a(t_data *this)
 	mlx_put_image_to_window(this->mlx_ptr, this->win_ptr, this->canvas.ptr, 0, 0);
 }
 
-void move_player(t_data *this)
-{
-	double movespeed = 0.05f;
-
-	if (this->wasd_movement[0])
-	{
-		if (this->map[(int)(this->player.y)][(int)(this->player.x + this->camera.dir_x * movespeed)] != WALL)
-			this->player.x += this->camera.dir_x * movespeed;
-		if (this->map[(int)(this->player.y - this->camera.dir_y * movespeed)][(int)(this->player.x)] != WALL)
-			this->player.y -= this->camera.dir_y * movespeed;
-	}
-	if (this->wasd_movement[1])
-	{
-		this->player.x += this->camera.dir_y * movespeed;
-		this->player.y -= this->camera.dir_x * movespeed;
-	}
-	else if (this->wasd_movement[2])
-	{
-		if (this->map[(int)(this->player.y)][(int)(this->player.x - this->camera.dir_x * movespeed)] != WALL)
-			this->player.x -= this->camera.dir_x * movespeed;
-		if (this->map[(int)(this->player.y + this->camera.dir_y * movespeed)][(int)(this->player.x)] != WALL)
-			this->player.y += this->camera.dir_y * movespeed;
-	}
-	else if (this->wasd_movement[3])
-	{
-		this->player.x -= this->camera.dir_y * movespeed;
-		this->player.y += this->camera.dir_x * movespeed;
-	}
-	/* else if (key == R)
-		reload(); */
-}
-
 int loop_hooks(t_data *this)
 {
-	a(this);
 	move_player(this);
-	return 0;
+	a(this);
+	return (EXIT_SUCCESS);
 }
 
 void	hooks(t_data *this)
 {
-	// mlx_mouse_hide();
+	mlx_mouse_hide(this->mlx_ptr, this->win_ptr);
 	// mlx_mouse_move(cos(this.camera.dir_x) + sin(this.camera.dir_y), WIN_HEIGHT / 2);
 
 	mlx_hook(this->win_ptr, KEYPRESS_EVENT, (1L << 0), on_keypress, this);
@@ -263,6 +228,7 @@ void	hooks(t_data *this)
 	mlx_hook(this->win_ptr, DESTROY_NOTIFY_EVENT, (1L << 17), quit_cub3d, this);
 
 	mlx_loop_hook(this->mlx_ptr, loop_hooks, this);
+
 	mlx_loop(this->mlx_ptr);
 }
 
@@ -275,7 +241,7 @@ int main(int argc, char **argv)
 	init_cub3d(&this);
 	if (!parse_scene(&this, argv[1]))
 		panic(NULL, &this);
-	this.win_ptr = mlx_new_window(this.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3D - macaquinho");
+	this.win_ptr = mlx_new_window(this.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3D - macaquinho sem calcinhas");
 	if (!this.win_ptr)
 		panic(WIN_INIT_ERR, &this);
 	hooks(&this);

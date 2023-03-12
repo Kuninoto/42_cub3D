@@ -1,0 +1,67 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_player.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/12 19:50:11 by nnuno-ca          #+#    #+#             */
+/*   Updated: 2023/03/12 20:40:24 by nnuno-ca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "data.h"
+
+#define MOVESPEED 0.05f
+
+void	move_up(t_data *this)
+{
+	if (this->map[(int)(this->player.y)]
+		[(int)(this->player.x + this->camera.dir_x * MOVESPEED)] != WALL)
+			this->player.x += this->camera.dir_x * MOVESPEED;
+	if (this->map[(int)(this->player.y - this->camera.dir_y * MOVESPEED)]
+		[(int)(this->player.x)] != WALL)
+			this->player.y -= this->camera.dir_y * MOVESPEED;
+}
+
+void	move_left(t_data *this)
+{
+	if (this->map[(int)(this->player.y)]
+		[(int)(this->player.x + this->camera.dir_x * MOVESPEED)] != WALL)
+		this->player.x += this->camera.dir_y * MOVESPEED;
+	if (this->map[(int)(this->player.y - this->camera.dir_y * MOVESPEED)]
+		[(int)(this->player.x)] != WALL)
+			this->player.y -= this->camera.dir_x * MOVESPEED;
+}
+
+void	move_down(t_data *this)
+{
+	if (this->map[(int)(this->player.y)]
+		[(int)(this->player.x - this->camera.dir_x * MOVESPEED)] != WALL)
+		this->player.x -= this->camera.dir_x * MOVESPEED;
+	if (this->map[(int)(this->player.y + this->camera.dir_y * MOVESPEED)]
+		[(int)(this->player.x)] != WALL)
+		this->player.y += this->camera.dir_y * MOVESPEED;
+}
+
+void	move_right(t_data *this)
+{
+	if (this->map[(int)(this->player.y)]
+		[(int)(this->player.x - this->camera.dir_x * MOVESPEED)] != WALL)
+		this->player.x -= this->camera.dir_y * MOVESPEED;
+	if (this->map[(int)(this->player.y + this->camera.dir_y * MOVESPEED)]
+		[(int)(this->player.x)] != WALL)
+		this->player.y += this->camera.dir_x * MOVESPEED;
+}
+
+void	move_player(t_data *this)
+{
+	if (this->wasd_movement[0])
+		move_up(this);
+	if (this->wasd_movement[1])
+		move_left(this);
+	else if (this->wasd_movement[2])
+		move_down(this);
+	else if (this->wasd_movement[3])
+		move_right(this);
+}

@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:16:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/12 01:44:14 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:41:08 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int on_keypress(int key, t_data *this)
 		this->wasd_movement[2] = true;
 	if (key == D || key == RIGHT)
 		this->wasd_movement[3] = true;
-	/* else if (key == R)
-		reload(); */
 	return (EXIT_SUCCESS);
 }
 

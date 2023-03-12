@@ -19,56 +19,33 @@ int	quit_cub3d(t_data *this)
 	return (EXIT_SUCCESS);
 }
 
-int	on_keypress(int key, t_data *this)
+int on_keypress(int key, t_data *this)
 {
-	double	movespeed = 1.0f;
-	double	rotspeed = 2.0f;
-	double	old_dir_x;
-	double	old_plane_x;
-
-	old_dir_x = this->camera.dir_x;
-	old_plane_x = this->camera.plane_x;
-
 	if (key == ESC)
 		quit_cub3d(this);
-	else if (key == W || key == UP)
-	{
-		mlx_destroy_image(this->mlx_ptr, this->canvas.ptr);
-		if (this->map[(int)(this->player.y + this->camera.dir_y * movespeed)][(int)(this->player.x)] == OPEN_SPACE)
-			this->player.x += this->camera.dir_x * movespeed;
-		if (this->map[(int)(this->player.y)][(int)(this->player.x + this->camera.dir_x * movespeed)] == OPEN_SPACE)
-			this->player.y += this->camera.dir_y * movespeed;
-		a(this);
-	}
-	else if (key == A || key == LEFT)
-	{
-		mlx_destroy_image(this->mlx_ptr, this->canvas.ptr);
-		this->camera.dir_x = this->camera.dir_x * cos(rotspeed) - this->camera.dir_y * sin(rotspeed);
-		this->camera.dir_y = old_dir_x * sin(rotspeed) + this->camera.dir_y * cos(rotspeed);
-		this->camera.plane_x = this->camera.plane_x * cos(rotspeed) - this->camera.plane_y * sin(rotspeed);
-		this->camera.plane_y = old_plane_x * sin(rotspeed) + this->camera.plane_y * cos(rotspeed);
-		a(this);
-	}
-	else if (key == S || key == DOWN)
-	{
-		mlx_destroy_image(this->mlx_ptr, this->canvas.ptr);
-		if (this->map[(int)(this->player.y - this->camera.dir_y * movespeed)][(int)(this->player.y)] == OPEN_SPACE)
-			this->player.x -= this->camera.dir_x * movespeed;
-		if (this->map[(int)(this->player.y)][(int)(this->player.x - this->camera.dir_x * movespeed)] == OPEN_SPACE)
-			this->player.y -= this->camera.dir_y * movespeed;
-		a(this);
-	}
-	else if (key == D || key == RIGHT)
-	{
-		mlx_destroy_image(this->mlx_ptr, this->canvas.ptr);
-		this->camera.dir_x = this->camera.dir_x * cos(-rotspeed) - this->camera.dir_y * sin(-rotspeed);
-		this->camera.dir_y = old_dir_x * sin(-rotspeed) + this->camera.dir_y * cos(-rotspeed);
-		this->camera.plane_x = this->camera.plane_x * cos(-rotspeed) - this->camera.plane_y * sin(-rotspeed);
-		this->camera.plane_y = old_plane_x * sin(-rotspeed) + this->camera.plane_y * cos(-rotspeed);
-		a(this);
-	}
+	if (key == W || key == UP)
+		this->wasd_movement[0] = true;
+	if (key == A || key == LEFT)
+		this->wasd_movement[1] = true;
+	if (key == S || key == DOWN)
+		this->wasd_movement[2] = true;
+	if (key == D || key == RIGHT)
+		this->wasd_movement[3] = true;
 	/* else if (key == R)
 		reload(); */
+	return (EXIT_SUCCESS);
+}
+
+int on_keyrelease(int key, t_data *this)
+{
+	if (key == W || key == UP)
+		this->wasd_movement[0] = false;
+	if (key == A || key == LEFT)
+		this->wasd_movement[1] = false;
+	if (key == S || key == DOWN)
+		this->wasd_movement[2] = false;
+	if (key == D || key == RIGHT)
+		this->wasd_movement[3] = false;
 	return (EXIT_SUCCESS);
 }
 
@@ -92,9 +69,23 @@ int	on_mouseclick(int button, int x, int y, t_data *this)
 int	mouse_handler(int x, int y, t_data *this)
 {
 	(void)this;
-	printf("Mouse Position\n");
-	printf("x: %d\n", x);
-	printf("y: %d\n", y);
+	(void)y;
+
+	static double old_x = 0;
+
+	double old_dir_x;
+	double old_plane_x;
+
+	old_dir_x = this->camera.dir_x;
+	old_plane_x = this->camera.plane_x;
+
+	double distance = (old_x - x) * 0.005;
+	old_x = x;
+
+	this->camera.dir_x = this->camera.dir_x * cos(distance) - this->camera.dir_y * sin(distance);
+	this->camera.dir_y = old_dir_x * sin(distance) + this->camera.dir_y * cos(distance);
+	this->camera.plane_x = this->camera.plane_x * cos(distance) - this->camera.plane_y * sin(distance);
+	this->camera.plane_y = old_plane_x * sin(distance) + this->camera.plane_y * cos(distance);
 
 	return (EXIT_SUCCESS);
 }

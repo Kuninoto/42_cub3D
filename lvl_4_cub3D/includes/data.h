@@ -37,10 +37,10 @@ typedef struct s_player
 
 typedef struct s_camera
 {
-	double dir_x;
-	double dir_y;
-	double plane_x;
-	double plane_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 } 				t_camera;
 
 typedef struct s_data
@@ -53,6 +53,7 @@ typedef struct s_data
 	t_img		canvas;
 	t_player	player;
 	t_camera	camera;
+	bool		wasd_movement[4];
 } 				t_data;
 
 #endif // DATA_H

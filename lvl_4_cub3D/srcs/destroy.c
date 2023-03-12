@@ -35,7 +35,7 @@ void	destroy(t_data *this)
 		mlx_destroy_window(this->mlx_ptr, this->win_ptr);
 	if (this->mlx_ptr)
 	{
-		mlx_destroy_display(this->mlx_ptr);
+		//mlx_destroy_display(this->mlx_ptr);
 		free(this->mlx_ptr);
 	}
 	if (this->map)

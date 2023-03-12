@@ -54,10 +54,14 @@ static inline void	init_cub3d(t_data *this)
 	this->camera.plane_y = 0.66;
 	this->camera.dir_x = -1.0f;
 	this->camera.dir_y = 0.0f;
+	this->wasd_movement[0] = false;
+	this->wasd_movement[1] = false;
+	this->wasd_movement[2] = false;
+	this->wasd_movement[3] = false;
 	this->map = NULL;
 	this->canvas = init_img();
 }
 
-int a(t_data *this);
+void a(t_data *this);
 
 #endif // LIBCUB3D_H

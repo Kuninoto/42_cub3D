@@ -1,6 +1,6 @@
 OS = $(shell uname)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g #-Ofast
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g #-Ofast
 
 ifeq ($(OS), Linux)
 	CFLAGS += -D OS_LINUX

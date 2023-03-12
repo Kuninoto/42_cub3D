@@ -96,7 +96,6 @@ static bool	parse_coord(char *coord, void *mlx_ptr, t_pixel **texture , char **m
 
 bool	parse_textures(t_data *this, char **map)
 {
-	printf("a\n");
 	if (!parse_coord("NO", this->mlx_ptr, &this->textures.north, map))
 		return (false);
 	if (!parse_coord("SO", this->mlx_ptr, &this->textures.south, map))

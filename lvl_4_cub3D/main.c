@@ -182,23 +182,23 @@ void a(t_data *this)
 		uint32_t color;
 		for (int y = drawStart; y < drawEnd; y += 1)
       	{
-			int texy = (int)texpos & (TEXTURE_HEIGHT - 1);
+			// int texy = (int)texpos & (TEXTURE_HEIGHT - 1);
 
-    	    texpos += step;
-			if (!side)
-			{
-				if (posX > mapX)
-					color = this->textures.north[TEXTURE_HEIGHT * texy + texx];
-				else
-					color = this->textures.south[TEXTURE_HEIGHT * texy + texx];
-			}
-			else
-			{
-				if (posY > mapY)
-					color = this->textures.west[TEXTURE_HEIGHT * texy + texx];
-				else
-					color = this->textures.east[TEXTURE_HEIGHT * texy + texx];
-			}
+    	    // texpos += step;
+			// if (!side)
+			// {
+			// 	if (posX > mapX)
+			// 		color = this->textures.north[TEXTURE_HEIGHT * texy + texx];
+			// 	else
+			// 		color = this->textures.south[TEXTURE_HEIGHT * texy + texx];
+			// }
+			// else
+			// {
+			// 	if (posY > mapY)
+			// 		color = this->textures.west[TEXTURE_HEIGHT * texy + texx];
+			// 	else
+			// 		color = this->textures.east[TEXTURE_HEIGHT * texy + texx];
+			// }
 			color = WHITE; //create_trgb(100, 255, 255, 255);
 			put_pixel_in_canvas(&this->canvas, x, y, color);
 		}
@@ -218,7 +218,7 @@ int loop_hooks(t_data *this)
 
 void	hooks(t_data *this)
 {
-	mlx_mouse_hide(this->mlx_ptr, this->win_ptr);
+	// mlx_mouse_hide(this->mlx_ptr, this->win_ptr);
 	// mlx_mouse_move(cos(this.camera.dir_x) + sin(this.camera.dir_y), WIN_HEIGHT / 2);
 
 	mlx_hook(this->win_ptr, KEYPRESS_EVENT, (1L << 0), on_keypress, this);
@@ -241,7 +241,7 @@ int main(int argc, char **argv)
 	init_cub3d(&this);
 	if (!parse_scene(&this, argv[1]))
 		panic(NULL, &this);
-	this.win_ptr = mlx_new_window(this.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3D - macaquinho sem calcinhas");
+	this.win_ptr = mlx_new_window(this.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3D - macaquinho sem calcinhas 🐒🚫👖 - 🦖👺");
 	if (!this.win_ptr)
 		panic(WIN_INIT_ERR, &this);
 	hooks(&this);

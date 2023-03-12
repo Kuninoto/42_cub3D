@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:09:06 by roramos           #+#    #+#             */
-/*   Updated: 2023/03/05 22:54:58 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/11 23:58:34 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ bool	parse_map(char **map_part, t_data *this)
 {
 	if (!has_walls(map_part) || !valid_content(map_part) || !save_player_position(map_part, this))
 		return (false);
+	this->map_height = matrix_len(map_part);
 	return (true);
 }

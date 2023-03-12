@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:26:22 by roramos           #+#    #+#             */
-/*   Updated: 2023/03/04 19:35:17 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/12 01:26:46 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,12 @@ static bool	parse_rgb(char *identifier, int *rgb_arr, char **map)
 	return (false);
 }
 
-static bool	parse_coord(char *coord, void *mlx_ptr, void **texture , char **map)
+static bool	parse_coord(char *coord, void *mlx_ptr, t_pixel **texture , char **map)
 {
-	size_t	i;
-	char	**temp;
-	int		size;
+	size_t		i;
+	char		**temp;
+	t_xpm_img	xpm_ptr;
+	int			size;
 
 	i = 0;
 	while (i < 6)
@@ -80,10 +81,11 @@ static bool	parse_coord(char *coord, void *mlx_ptr, void **texture , char **map)
 				free_matrix(temp);
 				return (parser_panic(INVALID_NBR_OF_ATTRIBUTES));
 			}
-			*texture = mlx_xpm_file_to_image(mlx_ptr, temp[1], &size, &size);
+			xpm_ptr.ptr = mlx_xpm_file_to_image(mlx_ptr, temp[1], &size, &size);
 			free_matrix(temp);
-			if (*texture == NULL)
+			if (xpm_ptr.ptr == NULL)
 				return (parser_panic(OPEN_TEXTURE_ERR));
+			*texture = get_pixel_array(mlx_ptr, &xpm_ptr);
 			return (true);
 		}
 		i += 1;

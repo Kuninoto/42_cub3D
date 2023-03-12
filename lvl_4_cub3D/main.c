@@ -14,6 +14,28 @@
 
 # define WHITE 0xFFFAFA
 # define BLACK 0x000000
+# define YELLOW 0xFFFF00
+# define RANDOM_ASS_COLOR 0x0000A3
+# define PADDING 4
+
+void	b(t_img *canva, int x, int y, int color)
+{
+	size_t i;
+	size_t j;
+
+	i = PADDING;
+	while (i < 4 + PADDING)
+	{
+		j = PADDING;
+		while (j < 4 + PADDING)
+		{
+			put_pixel_in_canvas(canva, (x * 8 + i), (y * 8 + j), color);
+			j += 1;
+		}
+		i += 1;
+	}
+	
+}
 
 void	draw_minimap(t_data *this)
 {
@@ -28,10 +50,10 @@ void	draw_minimap(t_data *this)
 		map_length = ft_strlen(this->map[y]);
 		while (x < map_length)
 		{
-			if (this->map[y][x] == WALL)
-				put_pixel_in_canvas(&this->canvas, (x * 10), (y * 10), WHITE);
-			else
-				put_pixel_in_canvas(&this->canvas, (x * 10), (y * 10), BLACK);
+			if (x == (int)this->player.x && y == (int)this->player.y)
+				b(&this->canvas, x, y, YELLOW);
+			else if (this->map[y][x] == WALL)
+				b(&this->canvas, x, y, WHITE);
 			x += 1;
 		}
 		y += 1;
@@ -199,12 +221,12 @@ void a(t_data *this)
 			// 	else
 			// 		color = this->textures.east[TEXTURE_HEIGHT * texy + texx];
 			// }
-			color = WHITE; //create_trgb(100, 255, 255, 255);
+			color = RANDOM_ASS_COLOR; //create_trgb(100, 255, 255, 255);
 			put_pixel_in_canvas(&this->canvas, x, y, color);
 		}
 		//draw_vertical_line(this, x, drawStart, drawEnd, create_trgb(100,150,30,255));
 	}
-	//draw_minimap(this);
+	draw_minimap(this);
 	mlx_clear_window(this->mlx_ptr, this->win_ptr);
 	mlx_put_image_to_window(this->mlx_ptr, this->win_ptr, this->canvas.ptr, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/13 19:21:07 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/13 19:42:43 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,6 @@ static inline void	init_cub3d(t_data *this)
 	this->textures.south.ptr = NULL;
 	this->textures.east.ptr = NULL;
 	this->textures.west.ptr = NULL;
-	this->camera.plane_x = 0;
-	this->camera.plane_y = 0.66;
-	this->camera.dir_x = -1.0f;
-	this->camera.dir_y = 0.0f;
 	this->wasd_movement[0] = false;
 	this->wasd_movement[1] = false;
 	this->wasd_movement[2] = false;

@@ -6,7 +6,7 @@
 /*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/13 19:18:31 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/13 20:39:32 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,14 @@ void a(t_data *this)
 		step = 1.0 * TEXTURE_HEIGHT / lineHeight;
 		texpos = (drawStart - (WIN_HEIGHT / 2) + lineHeight / 2) * step;
 		
+		int h2 = 0;
+		while (h2 < drawStart)
+		{
+			put_pixel_in_canvas(&this->canvas, x, h2, 
+				create_trgb(256, this->textures.sky_rgb[0], this->textures.sky_rgb[1],
+				this->textures.sky_rgb[2]));
+			h2 += 1;
+		}
 		uint32_t color;
 		for (int y = drawStart; y < drawEnd; y += 1)
       	{
@@ -164,6 +172,14 @@ void a(t_data *this)
 					color = mlx_extract_pixel_from_image(&this->textures.east, texx, texy);
 			}
 			put_pixel_in_canvas(&this->canvas, x, y, color);
+		}
+		h2 = drawEnd;
+		while (h2 < WIN_HEIGHT)
+		{
+			put_pixel_in_canvas(&this->canvas, x, h2, 
+				create_trgb(256, this->textures.floor_rgb[0], this->textures.sky_rgb[1],
+				this->textures.floor_rgb[2]));
+			h2 += 1;
 		}
 	}
 	draw_minimap(this);

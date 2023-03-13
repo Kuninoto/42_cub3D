@@ -6,7 +6,7 @@
 /*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 13:36:17 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/13 19:04:20 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/13 20:28:28 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@
 
 # define EXTENSION_LEN 4
 
+# define NORTH 'N'
+# define SOUTH 'S'
+# define EAST 'E'
+# define WEST 'W'
+
 // n >= lowest && n <= highest
 static inline bool	fits_in_intrange(int n, int lowest, int highest) {
 	return (n >= lowest && n <= highest);
@@ -54,9 +59,41 @@ static inline int parser_panic(char *error_msg) {
 	return (0);
 };
 
-bool	save_player_position(char **map, t_data *this);
 bool	parse_map(char **map_part, t_data *this);
 bool	parse_textures(t_data *this, char **textures_part);
 bool	parse_scene(t_data *this, char *file_name);
+bool	save_player_position(char **map, t_data *this);
+
+static inline void	init_player_pov(t_data *this)
+{
+	if (this->player.orientation == NORTH)
+	{
+		this->camera.plane_x = 0;
+		this->camera.plane_y = -1;
+		this->camera.dir_x = -1.0f;
+		this->camera.dir_y = 0.0f;
+	}
+	else if (this->player.orientation == SOUTH)
+	{
+		this->camera.plane_x = 0;
+		this->camera.plane_y = 1;
+		this->camera.dir_x = -1.0f;
+		this->camera.dir_y = 0.0f;
+	}
+	else if (this->player.orientation == EAST)
+	{
+		this->camera.plane_x = 0;
+		this->camera.plane_y = -0.66;
+		this->camera.dir_x = 1.0f;
+		this->camera.dir_y = 0.0f;
+	}
+	else if (this->player.orientation == WEST)
+	{
+		this->camera.plane_x = 0;
+		this->camera.plane_y = 0.66;
+		this->camera.dir_x = -1.0f;
+		this->camera.dir_y = 0.0f;
+	}
+}
 
 #endif // PARSER_H

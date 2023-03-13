@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_handlers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:16:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/12 19:41:08 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:37:56 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,16 @@ int	mouse_handler(int x, int y, t_data *this)
 	double old_dir_x;
 	double old_plane_x;
 
+	if (x <= 25 || x >= WIN_WIDTH - 25)
+	{
+		mlx_mouse_move(this->mlx_ptr, this->win_ptr, WIN_WIDTH / 2, y);
+		old_x = WIN_WIDTH / 2;
+	}
+
 	old_dir_x = this->camera.dir_x;
 	old_plane_x = this->camera.plane_x;
 
-	double distance = (old_x - x) * 0.005;
+	double distance = (old_x - x) * 0.003;
 	old_x = x;
 
 	this->camera.dir_x = this->camera.dir_x * cos(distance) - this->camera.dir_y * sin(distance);

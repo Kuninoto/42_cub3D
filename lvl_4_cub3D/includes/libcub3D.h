@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libcub3D.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/12 19:51:54 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/13 19:21:07 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,18 @@
 # define MLX_INIT_ERR "mlx_init() failed"
 # define WIN_INIT_ERR "mlx_new_window() failed"
 
+
 /* CONSTANTS */
+
+# define WHITE 0xFFFAFA
+# define BLACK 0x000000
+# define YELLOW 0xFFFF00
+# define MINIMAP_SQUARES_PADDING 4
 
 bool	valid_args(int argc, char **argv);
 
-void	destroy(t_data *this);
 void	panic(char *error_msg, t_data *this);
+void	destroy(t_data *this);
 void	put_error(char *error_msg);
 
 static inline void	init_cub3d(t_data *this)
@@ -46,10 +52,10 @@ static inline void	init_cub3d(t_data *this)
 	if (!this->mlx_ptr)
 		panic(MLX_INIT_ERR, this);
 	this->win_ptr = NULL;
-	this->textures.north = NULL;
-	this->textures.south = NULL;
-	this->textures.east = NULL;
-	this->textures.west = NULL;
+	this->textures.north.ptr = NULL;
+	this->textures.south.ptr = NULL;
+	this->textures.east.ptr = NULL;
+	this->textures.west.ptr = NULL;
 	this->camera.plane_x = 0;
 	this->camera.plane_y = 0.66;
 	this->camera.dir_x = -1.0f;
@@ -66,7 +72,9 @@ static inline int create_trgb(int t, int r, int g, int b) {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void a(t_data *this);
-void move_player(t_data *this);
+void	draw_minimap(t_data *this);
+
+void 	a(t_data *this);
+void 	move_player(t_data *this);
 
 #endif // LIBCUB3D_H

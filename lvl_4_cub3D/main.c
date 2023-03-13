@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/12 19:59:31 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/13 01:39:56 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,10 +181,10 @@ void a(t_data *this)
 		if (drawEnd >= WIN_HEIGHT)
 			drawEnd = WIN_HEIGHT - 1;
 
-		double	step;
+	//	double	step;
 		double	wallx;
 		int		texx;
-		double	texpos;
+	//	double	texpos;
 
 		if (!side)
 			wallx = (int)posY + perpWallDist * rayDirY;
@@ -198,8 +198,8 @@ void a(t_data *this)
 		if (side && rayDirY < 0)
 			texx = TEXTURE_WIDTH - texx - 1;
 
-		step = 1.0 * TEXTURE_HEIGHT / lineHeight;
-		texpos = (drawStart - WIN_HEIGHT / 2 + lineHeight / 2) * step;
+	//	step = 1.0 * TEXTURE_HEIGHT / lineHeight;
+	//	texpos = (drawStart - WIN_HEIGHT / 2 + lineHeight / 2) * step;
 		
 		uint32_t color;
 		for (int y = drawStart; y < drawEnd; y += 1)
@@ -235,14 +235,15 @@ int loop_hooks(t_data *this)
 {
 	move_player(this);
 	a(this);
+	mlx_destroy_image(this->mlx_ptr, this->canvas.ptr);
 	return (EXIT_SUCCESS);
 }
 
 void	hooks(t_data *this)
 {
-	// mlx_mouse_hide(this->mlx_ptr, this->win_ptr);
-	// mlx_mouse_move(cos(this.camera.dir_x) + sin(this.camera.dir_y), WIN_HEIGHT / 2);
-
+	//mlx_mouse_move(this->mlx_ptr, this->win_ptr, 
+	//	(this->camera.dir_x) + sin(this->camera.dir_y), WIN_HEIGHT / 2);
+	mlx_mouse_hide(this->mlx_ptr, this->win_ptr);
 	mlx_hook(this->win_ptr, KEYPRESS_EVENT, (1L << 0), on_keypress, this);
 	mlx_hook(this->win_ptr, KEYRELEASE_EVENT, (1L << 1), on_keyrelease, this);
 	mlx_mouse_hook(this->win_ptr, on_mouseclick, this);
@@ -263,7 +264,7 @@ int main(int argc, char **argv)
 	init_cub3d(&this);
 	if (!parse_scene(&this, argv[1]))
 		panic(NULL, &this);
-	this.win_ptr = mlx_new_window(this.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3D - macaquinho sem calcinhas 🐒🚫👖 - 🦖👺");
+	this.win_ptr = mlx_new_window(this.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3D - macaquinho sem calcinhas");
 	if (!this.win_ptr)
 		panic(WIN_INIT_ERR, &this);
 	hooks(&this);

@@ -6,17 +6,17 @@
 /*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:50:11 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/13 18:13:40 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/13 20:43:17 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "data.h"
 #include <math.h>
 
-#define MOVESPEED 0.02f
+#define MOVESPEED 0.08f
 #define MARGIN	0.1f
 
-void	move_up(t_data *this)
+static void	move_up(t_data *this)
 {
 	if (this->map[(int)(this->player.y)]
 		[(int)(this->player.x + this->camera.dir_x * MARGIN)] != WALL)
@@ -26,7 +26,7 @@ void	move_up(t_data *this)
 			this->player.y -= this->camera.dir_y * MOVESPEED;
 }
 
-void	move_left(t_data *this)
+static void	move_left(t_data *this)
 {
 	if (this->map[(int)(this->player.y)]
 		[(int)(this->player.x - this->camera.dir_y * MARGIN)] != WALL)
@@ -36,7 +36,7 @@ void	move_left(t_data *this)
 			this->player.y -= this->camera.dir_x * MOVESPEED;
 }
 
-void	move_down(t_data *this)
+static void	move_down(t_data *this)
 {
 	if (this->map[(int)(this->player.y)]
 		[(int)(this->player.x - this->camera.dir_x * MARGIN)] != WALL)
@@ -46,7 +46,7 @@ void	move_down(t_data *this)
 		this->player.y += this->camera.dir_y * MOVESPEED;
 }
 
-void	move_right(t_data *this)
+static void	move_right(t_data *this)
 {
 	if (this->map[(int)(this->player.y)]
 		[(int)(this->player.x + this->camera.dir_y * MARGIN)] != WALL)

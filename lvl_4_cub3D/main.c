@@ -3,62 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/13 14:34:04 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/13 19:18:31 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libcub3D.h"
 
-# define WHITE 0xFFFAFA
-# define BLACK 0x000000
-# define YELLOW 0xFFFF00
 # define RANDOM_ASS_COLOR 0x0000A3
-# define PADDING 4
-
-void	b(t_img *canva, int x, int y, int color)
-{
-	size_t i;
-	size_t j;
-
-	i = PADDING;
-	while (i < 4 + PADDING)
-	{
-		j = PADDING;
-		while (j < 4 + PADDING)
-		{
-			put_pixel_in_canvas(canva, (x * 8 + i), (y * 8 + j), color);
-			j += 1;
-		}
-		i += 1;
-	}
-	
-}
-
-void	draw_minimap(t_data *this)
-{
-	int x;
-	int	y;
-	int	map_length;
-
-	y = 0;
-	while (y < this->map_height)
-	{
-		x = 0;
-		map_length = ft_strlen(this->map[y]);
-		while (x < map_length)
-		{
-			if (x == (int)this->player.x && y == (int)this->player.y)
-				b(&this->canvas, x, y, YELLOW);
-			else if (this->map[y][x] == WALL)
-				b(&this->canvas, x, y, WHITE);
-			x += 1;
-		}
-		y += 1;
-	}
-}
 
 void draw_vertical_line(t_data *this, size_t x, size_t drawStart, size_t drawEnd, size_t color)
 {
@@ -92,37 +46,30 @@ void a(t_data *this)
 
 	for (int x = 0; x < WIN_WIDTH; x += 1)
 	{
-		// calculate ray position and direction
-		double 	cameraX = 2 * x / (double)WIN_WIDTH - 1; // x-coordinate in camera space
+		double 	cameraX = 2 * x / (double)WIN_WIDTH - 1;
 		double 	rayDirX = this->camera.dir_x + this->camera.plane_x * cameraX;
 		double 	rayDirY = this->camera.dir_y + this->camera.plane_y * cameraX;
 
-		// x and y start position
 		double		posX = this->player.x;
 		double		posY = this->player.y;
 
-		// which box of the map we're in
 		int 	mapX = (int)posX;
 		int 	mapY = (int)posY;
 
-		// length of ray from current position to next x or y-side
 		double 	sideDistX;
 		double 	sideDistY;
 
-		// length of ray from one x or y-side to next x or y-side
 		double deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1 / rayDirX);
       	double deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
 
 		double 	perpWallDist;
 
-		// what direction to step in x or y-direction (either +1 or -1)
 		int 	stepX;
 		int 	stepY;
 
-		bool	hit = false; // was there a wall hit?
-		bool 	side;	 // was a NS or a EW wall hit?
+		bool	hit = false;
+		bool 	side;
 
-		// calculate step and initial sideDist
 		if (rayDirX < 0)
 		{
 			stepX = -1;
@@ -144,10 +91,8 @@ void a(t_data *this)
 			sideDistY = (mapY + 1.0f - posY) * deltaDistY;
 		}
 
-		// perform DDA
 		while (!hit)
 		{
-			// jump to next map square, either in x-direction, or in y-direction
 			if (sideDistX < sideDistY)
 			{
 				sideDistX += deltaDistX;
@@ -160,7 +105,6 @@ void a(t_data *this)
 				mapY += stepY;
 				side = true;
 			}
-			// Check if ray has hit a wall
 			if (this->map[mapY][mapX] == WALL)
 				hit = true;
 		}
@@ -170,10 +114,8 @@ void a(t_data *this)
 		else
 			perpWallDist = sideDistY - deltaDistY;
 
-		// Calculate height of line to draw on screen
 		int lineHeight = (int)(WIN_HEIGHT / perpWallDist);
 
-		// calculate lowest and highest pixel to fill in current stripe
 		int drawStart = -lineHeight / 2 + WIN_HEIGHT / 2;
 		if (drawStart < 0)
 			drawStart = 0;
@@ -192,7 +134,6 @@ void a(t_data *this)
 			wallx = (int)posX + perpWallDist * rayDirX;
 		wallx -= floor(wallx);
 
-		// getting texx (which x point on the texture) from wallx (which x point on the wall)
 		texx = (int)(wallx * (double)TEXTURE_WIDTH);
 		if (!side && rayDirX > 0)
 			texx = TEXTURE_WIDTH - texx - 1;
@@ -211,21 +152,19 @@ void a(t_data *this)
 			if (!side)
 			{
 				if (posX > mapX)
-					color = this->textures.north[(TEXTURE_HEIGHT * texy) + texx];
+					color = mlx_extract_pixel_from_image(&this->textures.north, texx, texy);
 				else
-					color = this->textures.south[(TEXTURE_HEIGHT * texy) + texx];
+					color = mlx_extract_pixel_from_image(&this->textures.south, texx, texy);
 			}
 			else
 			{
 				if (posY > mapY)
-					color = this->textures.west[(TEXTURE_HEIGHT * texy) + texx];
+					color = mlx_extract_pixel_from_image(&this->textures.west, texx, texy);
 				else
-					color = this->textures.east[(TEXTURE_HEIGHT * texy) + texx];
+					color = mlx_extract_pixel_from_image(&this->textures.east, texx, texy);
 			}
-			// color = RANDOM_ASS_COLOR; //create_trgb(100, 255, 255, 255);
 			put_pixel_in_canvas(&this->canvas, x, y, color);
 		}
-		//draw_vertical_line(this, x, drawStart, drawEnd, create_trgb(100,150,30,255));
 	}
 	draw_minimap(this);
 	mlx_clear_window(this->mlx_ptr, this->win_ptr);
@@ -242,8 +181,8 @@ int loop_hooks(t_data *this)
 
 void	hooks(t_data *this)
 {
-	//mlx_mouse_move(this->mlx_ptr, this->win_ptr, 
-	//	(this->camera.dir_x) + sin(this->camera.dir_y), WIN_HEIGHT / 2);
+	mlx_mouse_move(this->mlx_ptr, this->win_ptr, 
+		(this->camera.dir_x) + sin(this->camera.dir_y), WIN_HEIGHT / 2);
 	mlx_mouse_hide(this->mlx_ptr, this->win_ptr);
 	mlx_hook(this->win_ptr, KEYPRESS_EVENT, (1L << 0), on_keypress, this);
 	mlx_hook(this->win_ptr, KEYRELEASE_EVENT, (1L << 1), on_keyrelease, this);

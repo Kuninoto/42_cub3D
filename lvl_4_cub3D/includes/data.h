@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:34:03 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/12 19:51:24 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:56:10 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ typedef struct s_textures
 {
 	int		sky_rgb[3];
 	int		floor_rgb[3];	
-	t_pixel	*north;
-	t_pixel	*south;
-	t_pixel	*east;
-	t_pixel	*west;
+	t_img	north;
+	t_img	south;
+	t_img	east;
+	t_img	west;
 }				t_textures;
 
 typedef struct s_player

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:50:11 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/12 20:40:24 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:13:40 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "data.h"
 #include <math.h>
 
-#define MOVESPEED 0.05f
+#define MOVESPEED 0.02f
 #define MARGIN	0.1f
 
 void	move_up(t_data *this)

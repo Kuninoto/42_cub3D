@@ -1,7 +1,7 @@
-NO ./assets/background.xpm
-SO ./assets/background.xpm
-WE ./assets/background.xpm
-EA ./assets/background.xpm
+NO ./assets/kiro_64x64.xpm
+SO ./assets/kiro_64x64.xpm
+WE ./assets/kiro_64x64.xpm
+EA ./assets/kiro_64x64.xpm
 
 F 220,100,0
 C 0,30,4 

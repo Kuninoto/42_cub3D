@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/13 01:39:56 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:34:04 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,10 +181,10 @@ void a(t_data *this)
 		if (drawEnd >= WIN_HEIGHT)
 			drawEnd = WIN_HEIGHT - 1;
 
-	//	double	step;
+		double	step;
 		double	wallx;
 		int		texx;
-	//	double	texpos;
+		double	texpos;
 
 		if (!side)
 			wallx = (int)posY + perpWallDist * rayDirY;
@@ -192,36 +192,37 @@ void a(t_data *this)
 			wallx = (int)posX + perpWallDist * rayDirX;
 		wallx -= floor(wallx);
 
+		// getting texx (which x point on the texture) from wallx (which x point on the wall)
 		texx = (int)(wallx * (double)TEXTURE_WIDTH);
 		if (!side && rayDirX > 0)
 			texx = TEXTURE_WIDTH - texx - 1;
 		if (side && rayDirY < 0)
 			texx = TEXTURE_WIDTH - texx - 1;
 
-	//	step = 1.0 * TEXTURE_HEIGHT / lineHeight;
-	//	texpos = (drawStart - WIN_HEIGHT / 2 + lineHeight / 2) * step;
+		step = 1.0 * TEXTURE_HEIGHT / lineHeight;
+		texpos = (drawStart - (WIN_HEIGHT / 2) + lineHeight / 2) * step;
 		
 		uint32_t color;
 		for (int y = drawStart; y < drawEnd; y += 1)
       	{
-			// int texy = (int)texpos & (TEXTURE_HEIGHT - 1);
+			int texy = (int)texpos & (TEXTURE_HEIGHT - 1);
 
-    	    // texpos += step;
-			// if (!side)
-			// {
-			// 	if (posX > mapX)
-			// 		color = this->textures.north[TEXTURE_HEIGHT * texy + texx];
-			// 	else
-			// 		color = this->textures.south[TEXTURE_HEIGHT * texy + texx];
-			// }
-			// else
-			// {
-			// 	if (posY > mapY)
-			// 		color = this->textures.west[TEXTURE_HEIGHT * texy + texx];
-			// 	else
-			// 		color = this->textures.east[TEXTURE_HEIGHT * texy + texx];
-			// }
-			color = RANDOM_ASS_COLOR; //create_trgb(100, 255, 255, 255);
+    	    texpos += step;
+			if (!side)
+			{
+				if (posX > mapX)
+					color = this->textures.north[(TEXTURE_HEIGHT * texy) + texx];
+				else
+					color = this->textures.south[(TEXTURE_HEIGHT * texy) + texx];
+			}
+			else
+			{
+				if (posY > mapY)
+					color = this->textures.west[(TEXTURE_HEIGHT * texy) + texx];
+				else
+					color = this->textures.east[(TEXTURE_HEIGHT * texy) + texx];
+			}
+			// color = RANDOM_ASS_COLOR; //create_trgb(100, 255, 255, 255);
 			put_pixel_in_canvas(&this->canvas, x, y, color);
 		}
 		//draw_vertical_line(this, x, drawStart, drawEnd, create_trgb(100,150,30,255));
@@ -249,9 +250,7 @@ void	hooks(t_data *this)
 	mlx_mouse_hook(this->win_ptr, on_mouseclick, this);
 	mlx_hook(this->win_ptr, MOTION_NOTIFY, (1L << 6), mouse_handler, this);
 	mlx_hook(this->win_ptr, DESTROY_NOTIFY_EVENT, (1L << 17), quit_cub3d, this);
-
 	mlx_loop_hook(this->mlx_ptr, loop_hooks, this);
-
 	mlx_loop(this->mlx_ptr);
 }
 
@@ -268,6 +267,5 @@ int main(int argc, char **argv)
 	if (!this.win_ptr)
 		panic(WIN_INIT_ERR, &this);
 	hooks(&this);
-	destroy(&this);
 	return (EXIT_SUCCESS);	
 }

@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 00:01:40 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/12 01:29:06 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:28:14 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_pixel *get_pixel_array(void *mlx_ptr, t_xpm_img *xpm_img)
 		x = 0;
 		while (x < xpm_img->width)
 		{
-			texture[y * xpm_img->width + x] = xpm_img->data[y * xpm_img->width + x];
+			texture[(xpm_img->width * y) + x] = xpm_img->data[(xpm_img->width * y) + x];
 			x += 1;
 		}
 		y += 1;

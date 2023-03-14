@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 13:36:17 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/13 20:28:28 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/14 15:18:04 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static inline int parser_panic(char *error_msg) {
 bool	parse_map(char **map_part, t_data *this);
 bool	parse_textures(t_data *this, char **textures_part);
 bool	parse_scene(t_data *this, char *file_name);
-bool	save_player_position(char **map, t_data *this);
+bool	save_player_info(char **map, t_data *this);
 
 static inline void	init_player_pov(t_data *this)
 {

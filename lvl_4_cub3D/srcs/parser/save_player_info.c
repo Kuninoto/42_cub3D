@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   save_player_position.c                             :+:      :+:    :+:   */
+/*   save_player_info.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:30:25 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/11 23:19:27 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:17:29 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "parser.h"
 
-bool	save_player_position(char **map, t_data *this)
+bool	save_player_info(char **map, t_data *this)
 {
 	bool	player_found;
 	int		i;

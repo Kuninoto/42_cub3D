@@ -1,6 +1,6 @@
 OS = $(shell uname)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g # -Ofast
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g #-Ofast
 
 ifeq ($(OS), Linux)
 	CFLAGS += -D OS_LINUX
@@ -18,8 +18,8 @@ NAME = cub3D
 
 TEST_FILE = scenes/alter.cub
 
-PARSER = parse_textures parse_map parse_scene save_player_position
-GENERAL = valid_args event_handlers destroy panic put_error\
+PARSER = parse_textures parse_map parse_scene save_player_info
+GENERAL = valid_args draw_minimap move_player event_handlers destroy panic put_error\
 		  main
 
 SRCS = $(addsuffix .c, $(PARSER))\

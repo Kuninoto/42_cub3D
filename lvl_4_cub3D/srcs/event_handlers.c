@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_handlers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:16:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/06 16:30:41 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/13 20:47:52 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,56 +21,60 @@ int	quit_cub3d(t_data *this)
 
 int	on_keypress(int key, t_data *this)
 {
-	printf("keypress code = %d\n", key);
 	if (key == ESC)
 		quit_cub3d(this);
-	/* else if (key == W)
-		walk_front();
-	else if (key == A)
-		walk_left();
-	else if (key == S)
-		walk_back();
-	else if (key == D)
-		walk_right();
-	else if (key == LEFT || key == Q)
-		turn_left();
-	else if (key == RIGHT || key == E)
-		turn_right();
-	else if (key == R)
-		reload();
-	*/
+	if (key == W || key == UP)
+		this->wasd_movement[0] = true;
+	if (key == A || key == LEFT)
+		this->wasd_movement[1] = true;
+	if (key == S || key == DOWN)
+		this->wasd_movement[2] = true;
+	if (key == D || key == RIGHT)
+		this->wasd_movement[3] = true;
+	return (EXIT_SUCCESS);
+}
+
+int	on_keyrelease(int key, t_data *this)
+{
+	if (key == W || key == UP)
+		this->wasd_movement[0] = false;
+	if (key == A || key == LEFT)
+		this->wasd_movement[1] = false;
+	if (key == S || key == DOWN)
+		this->wasd_movement[2] = false;
+	if (key == D || key == RIGHT)
+		this->wasd_movement[3] = false;
 	return (EXIT_SUCCESS);
 }
 
 int	on_mouseclick(int button, int x, int y, t_data *this)
-{
+{	
+	(void)x;
+	(void)y;
 	(void)this;
 	printf("mousepress code = %d\n", button);
-	printf("Mouse Position\n");
-	printf("x: %d\n", x);
-	printf("y: %d\n", y);
-	/* if (button == LEFT_CLICK)
-		shoot();
-	else if (button == WHEEL_CLICK)
-		stab();
-	else if (button == RIGHT_CLICK)
-		idk();
-	*/
 	return (EXIT_SUCCESS);
 }
 
 int	mouse_handler(int x, int y, t_data *this)
 {
-	(void)this;
-	printf("Mouse Position\n");
-	printf("x: %d\n", x);
-	printf("y: %d\n", y);
-	/* if (button == LEFT_CLICK)
-		shoot();
-	else if (button == WHEEL_CLICK)
-		stab();
-	else if (button == RIGHT_CLICK)
-		idk();
-	*/
+	double			old_dir_x;
+	double			old_plane_x;
+	double			distance;
+	static double	old_x = 0;
+
+	(void)y;
+	old_dir_x = this->camera.dir_x;
+	old_plane_x = this->camera.plane_x;
+	distance = (old_x - x) * 0.003;
+	old_x = x;
+	this->camera.dir_x = this->camera.dir_x * cos(distance)
+		- this->camera.dir_y * sin(distance);
+	this->camera.dir_y = old_dir_x * sin(distance)
+		+ this->camera.dir_y * cos(distance);
+	this->camera.plane_x = this->camera.plane_x * cos(distance)
+		- this->camera.plane_y * sin(distance);
+	this->camera.plane_y = old_plane_x * sin(distance)
+		+ this->camera.plane_y * cos(distance);
 	return (EXIT_SUCCESS);
 }

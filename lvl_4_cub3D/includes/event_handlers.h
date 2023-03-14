@@ -18,7 +18,8 @@
 
 int	quit_cub3d(t_data *this);
 int	on_keypress(int key, t_data *this);
-int	on_mouseclick(int button, int x, int y, t_data *this);
+int on_keyrelease(int key, t_data *this);
+int on_mouseclick(int button, int x, int y, t_data *this);
 int	mouse_handler(int x, int y, t_data *this);
 
 #endif // EVENT_HANDLERS_H

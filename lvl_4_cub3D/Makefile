@@ -16,7 +16,7 @@ VPATH = srcs srcs/parser
 RM = rm -rf
 NAME = cub3D
 
-TEST_FILE = scenes/alter.cub
+TEST_FILE = scenes/coord_walls_map.cub
 
 PARSER = load_img parse_textures parse_map parse_scene save_player_info init_player_pov
 GENERAL = valid_args draw_minimap move_player event_handlers destroy panic put_error\

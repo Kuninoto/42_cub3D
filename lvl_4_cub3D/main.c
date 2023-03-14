@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/13 20:39:32 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/14 15:58:47 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libcub3D.h"
-
-# define RANDOM_ASS_COLOR 0x0000A3
 
 void draw_vertical_line(t_data *this, size_t x, size_t drawStart, size_t drawEnd, size_t color)
 {
@@ -50,8 +48,8 @@ void a(t_data *this)
 		double 	rayDirX = this->camera.dir_x + this->camera.plane_x * cameraX;
 		double 	rayDirY = this->camera.dir_y + this->camera.plane_y * cameraX;
 
-		double		posX = this->player.x;
-		double		posY = this->player.y;
+		double	posX = this->player.x;
+		double	posY = this->player.y;
 
 		int 	mapX = (int)posX;
 		int 	mapY = (int)posY;
@@ -59,8 +57,8 @@ void a(t_data *this)
 		double 	sideDistX;
 		double 	sideDistY;
 
-		double deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1 / rayDirX);
-      	double deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
+		double	deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1 / rayDirX);
+      	double	deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
 
 		double 	perpWallDist;
 
@@ -160,16 +158,16 @@ void a(t_data *this)
 			if (!side)
 			{
 				if (posX > mapX)
-					color = mlx_extract_pixel_from_image(&this->textures.north, texx, texy);
+					color = extract_pixel_from_image(&this->textures.north, texx, texy);
 				else
-					color = mlx_extract_pixel_from_image(&this->textures.south, texx, texy);
+					color = extract_pixel_from_image(&this->textures.south, texx, texy);
 			}
 			else
 			{
 				if (posY > mapY)
-					color = mlx_extract_pixel_from_image(&this->textures.west, texx, texy);
+					color = extract_pixel_from_image(&this->textures.west, texx, texy);
 				else
-					color = mlx_extract_pixel_from_image(&this->textures.east, texx, texy);
+					color = extract_pixel_from_image(&this->textures.east, texx, texy);
 			}
 			put_pixel_in_canvas(&this->canvas, x, y, color);
 		}

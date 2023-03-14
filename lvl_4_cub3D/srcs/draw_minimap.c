@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:18:39 by roramos           #+#    #+#             */
-/*   Updated: 2023/03/13 19:18:58 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/14 15:17:08 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	draw_square(t_img *canva, int x, int y, int color)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	i = MINIMAP_SQUARES_PADDING;
 	while (i < 4 + MINIMAP_SQUARES_PADDING)
@@ -28,12 +28,11 @@ static void	draw_square(t_img *canva, int x, int y, int color)
 		}
 		i += 1;
 	}
-	
 }
 
 void	draw_minimap(t_data *this)
 {
-	int x;
+	int	x;
 	int	y;
 	int	map_length;
 

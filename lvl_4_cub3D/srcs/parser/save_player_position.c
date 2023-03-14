@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:30:25 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/07 19:36:32 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/05 22:59:55 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ bool	save_player_position(char **map, t_data *this)
 					return (parser_panic(INVALID_NBR_PLAYER_POSITIONS));
 				else
 				{
-					this->player.position.x = j;
-					this->player.position.y = i;
+					this->player.x = j;
+					this->player.y = i;
 					this->player.orientation = map[i][j];
 					player_found = true;
 				}

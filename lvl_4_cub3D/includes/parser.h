@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 13:36:17 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/07 20:43:05 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/05 23:01:54 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@
 // CONSTANTS ------------------------------------------------------
 
 # define EXTENSION_LEN 4
-# define WALL '1'
-# define OPEN_SPACE '0'
 
 // n >= lowest && n <= highest
 static inline bool	fits_in_intrange(int n, int lowest, int highest) {

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   img.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:53:37 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/14 15:31:16 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:45:09 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMG_H
 # define IMG_H
 
-#ifdef OS_LINUX
-	# include "../mlx_linux/mlx.h"
-#else
-	# include "../mlx_macos/mlx.h"
-#endif // OS_LINUX
+# ifdef OS_LINUX
+#  include "../mlx_linux/mlx.h"
+# else
+#  include "../mlx_macos/mlx.h"
+# endif // OS_LINUX
 
 # include <stddef.h>
 # include <stdint.h>
@@ -41,24 +41,29 @@ typedef struct s_img {
 	int		endian;
 }				t_img;
 
-static inline t_img	init_img(void) {
-	return ((t_img) { .ptr = NULL,
-					  .addr = NULL,
-					  .bpp = 0,
-					  .line_len = 0,
-					  .endian = 0 });
-};
+static inline t_img	init_img(void)
+{
+	return ((t_img)
+		{
+			.ptr = NULL,
+			.addr = NULL,
+			.bpp = 0,
+			.line_len = 0,
+			.endian = 0
+		});
+}
 
-static inline t_img	new_img(void *mlx_ptr) {
+static inline t_img	new_img(void *mlx_ptr)
+{
 	t_img	new_img;
 
 	new_img.ptr = mlx_new_image(mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
-	new_img.addr = mlx_get_data_addr(new_img.ptr, &new_img.bpp, &new_img.line_len,
-							&new_img.endian);
+	new_img.addr = mlx_get_data_addr(new_img.ptr, &new_img.bpp,
+			&new_img.line_len, &new_img.endian);
 	return (new_img);
-};
+}
 
-static inline void	put_pixel_in_canvas(t_img *img, int x, int y, int color) 
+static inline void	put_pixel_in_canvas(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
@@ -66,10 +71,11 @@ static inline void	put_pixel_in_canvas(t_img *img, int x, int y, int color)
 	*(uint32_t *)dst = color;
 }
 
-static inline int	extract_pixel_from_image(t_img *img, int point_x, int point_y)
+static inline int	extract_pixel_from_image(t_img *img,
+		int point_x, int point_y)
 {
-	 return (*(uint32_t *)(img->addr
-        + (point_y * img->line_len) + (point_x * img->bpp / 8)));
+	return (*(uint32_t *)(img->addr
+		+ (point_y * img->line_len) + (point_x * img->bpp / 8)));
 }
 
 #endif // IMG_H

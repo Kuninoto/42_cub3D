@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/14 19:07:23 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:37:40 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 void	render_frame(t_data *this)
 {
+	int			x;
+	t_raycaster	rc;
+
 	this->canvas = new_img(this->mlx_ptr);
-
-	for (int x = 0; x < WIN_WIDTH; x += 1)
+	x = 0;
+	while (x < WIN_WIDTH)
 	{
-		double 	cameraX = 2 * x / (double)WIN_WIDTH - 1;
-		double 	rayDirX = this->camera.dir_x + this->camera.plane_x * cameraX;
-		double 	rayDirY = this->camera.dir_y + this->camera.plane_y * cameraX;
+		rc.camera_x = 2 * x / (double)WIN_WIDTH - 1;
+		rc.ray_dir_x = this->camera.dir_x + this->camera.plane_x * rc.camera_x;
+		rc.ray_dir_y = this->camera.dir_y + this->camera.plane_y * rc.camera_x;
 
-		double	posX = this->player.x;
-		double	posY = this->player.y;
-
-		int 	mapX = (int)posX;
-		int 	mapY = (int)posY;
+		int 	mapX = (int)this->player.x;
+		int 	mapY = (int)this->player.y;
 
 		double 	sideDistX;
 		double 	sideDistY;
 
-		double	deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1 / rayDirX);
-      	double	deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
+		rc.delta_dist_x = fabs(1 / rc.ray_dir_x);
+      	rc.delta_dist_y = fabs(1 / rc.ray_dir_y);
 
 		double 	perpWallDist;
 
@@ -42,38 +42,38 @@ void	render_frame(t_data *this)
 		bool	hit = false;
 		bool 	side;
 
-		if (rayDirX < 0)
+		if (rc.ray_dir_x < 0)
 		{
 			stepX = -1;
-			sideDistX = (posX - mapX) * deltaDistX;
+			sideDistX = (this->player.x - mapX) * rc.delta_dist_x;
 		}
 		else
 		{
 			stepX = 1;
-			sideDistX = (mapX + 1.0f - posX) * deltaDistX;
+			sideDistX = (mapX + 1.0f - this->player.x) * rc.delta_dist_x;
 		}
-		if (rayDirY > 0)
+		if (rc.ray_dir_y > 0)
 		{
 			stepY = -1;
-			sideDistY = (posY - mapY) * deltaDistY;
+			sideDistY = (this->player.y - mapY) * rc.delta_dist_y;
 		}
 		else
 		{
 			stepY = 1;
-			sideDistY = (mapY + 1.0f - posY) * deltaDistY;
+			sideDistY = (mapY + 1.0f - this->player.y) * rc.delta_dist_y;
 		}
 
 		while (!hit)
 		{
 			if (sideDistX < sideDistY)
 			{
-				sideDistX += deltaDistX;
+				sideDistX += rc.delta_dist_x;
 				mapX += stepX;
 				side = false;
 			}
 			else
 			{
-				sideDistY += deltaDistY;
+				sideDistY += rc.delta_dist_y;
 				mapY += stepY;
 				side = true;
 			}
@@ -82,9 +82,9 @@ void	render_frame(t_data *this)
 		}
 
 		if (!side)
-			perpWallDist = sideDistX - deltaDistX;
+			perpWallDist = sideDistX - rc.delta_dist_x;
 		else
-			perpWallDist = sideDistY - deltaDistY;
+			perpWallDist = sideDistY - rc.delta_dist_y;
 
 		int lineHeight = (int)(WIN_HEIGHT / perpWallDist);
 
@@ -101,20 +101,20 @@ void	render_frame(t_data *this)
 		double	texpos;
 
 		if (!side)
-			wallx = (int)posY + perpWallDist * rayDirY;
+			wallx = (int)this->player.y + perpWallDist * rc.ray_dir_y;
 		else
-			wallx = (int)posX + perpWallDist * rayDirX;
+			wallx = (int)this->player.x + perpWallDist * rc.ray_dir_x;
 		wallx -= floor(wallx);
 
 		texx = (int)(wallx * (double)TEXTURE_WIDTH);
-		if (!side && rayDirX > 0)
+		if (!side && rc.ray_dir_x > 0)
 			texx = TEXTURE_WIDTH - texx - 1;
-		if (side && rayDirY < 0)
+		if (side && rc.ray_dir_y < 0)
 			texx = TEXTURE_WIDTH - texx - 1;
 
 		step = 1.0 * TEXTURE_HEIGHT / lineHeight;
 		texpos = (drawStart - (WIN_HEIGHT / 2) + lineHeight / 2) * step;
-		
+
 		int h2 = 0;
 		while (h2 < drawStart)
 		{
@@ -123,6 +123,7 @@ void	render_frame(t_data *this)
 				this->textures.sky_rgb[2]));
 			h2 += 1;
 		}
+
 		uint32_t color;
 		for (int y = drawStart; y < drawEnd; y += 1)
       	{
@@ -131,17 +132,17 @@ void	render_frame(t_data *this)
     	    texpos += step;
 			if (!side)
 			{
-				if (posX > mapX)
-					color = extract_pixel_from_image(&this->textures.north, texx, texy);
-				else
-					color = extract_pixel_from_image(&this->textures.south, texx, texy);
-			}
-			else
-			{
-				if (posY > mapY)
+				if (this->player.x > mapX)
 					color = extract_pixel_from_image(&this->textures.west, texx, texy);
 				else
 					color = extract_pixel_from_image(&this->textures.east, texx, texy);
+			}
+			else
+			{
+				if (this->player.y > mapY)
+					color = extract_pixel_from_image(&this->textures.north, texx, texy);
+				else
+					color = extract_pixel_from_image(&this->textures.south, texx, texy);
 			}
 			put_pixel_in_canvas(&this->canvas, x, y, color);
 		}
@@ -152,7 +153,8 @@ void	render_frame(t_data *this)
 				create_trgb(256, this->textures.floor_rgb[0], this->textures.sky_rgb[1],
 				this->textures.floor_rgb[2]));
 			h2 += 1;
-		}
+		}	
+		x += 1;
 	}
 	mlx_clear_window(this->mlx_ptr, this->win_ptr);
 	mlx_put_image_to_window(this->mlx_ptr, this->win_ptr, this->canvas.ptr, 0, 0);

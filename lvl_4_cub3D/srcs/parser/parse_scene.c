@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 19:37:56 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/14 17:04:50 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:10:14 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,8 @@ bool	parse_scene(t_data *this, char *file_name)
 
 	return_value = true;
 	scene_fd = open(file_name, O_RDONLY);
-	if (scene_fd == -1)
+	if (scene_fd == -1 || is_scene_empty(file_name))
 		return (parser_panic(OPEN_SCENE_ERR));
-	if (is_scene_empty(file_name))
-		return (parser_panic(EMPTY_SCENE_ERR));
 	textures_part = get_textures_part(scene_fd);
 	if (!parse_textures(this, textures_part))
 		return_value = false;
@@ -130,25 +128,6 @@ bool	parse_scene(t_data *this, char *file_name)
 	}
 	if (return_value != false)
 		this->map = map_part;
-
-/* 	if (return_value != false)
-	{
-		printf("NO: %p\n", this->textures.north);
-		printf("SO: %p\n", this->textures.south);
-		printf("WE: %p\n", this->textures.west);
-		printf("EA: %p\n", this->textures.east);
-		printf("Floor RGB: %d,%d,%d\n", this->textures.floor_rgb[0],this->textures.floor_rgb[1],this->textures.floor_rgb[2]);
-		printf("Sky RGB: %d,%d,%d\n", this->textures.sky_rgb[0],this->textures.sky_rgb[1],this->textures.sky_rgb[2]);
-		printf("\nTEXTURES_PART\n");
-		print_char_matrix(textures_part);
-		printf("\nMAP_PART\n");
-		print_char_matrix(map_part);
-		printf("\nPLAYER'S START POSITION\n");
-		printf("Player's start position: y: %.1f x: %.1f\n", this->player.y, this->player.x);
-		printf("Orientation: %c\n", this->player.orientation);
-	} */
-
 	close(scene_fd);
-	free_matrix(textures_part);
 	return (return_value);
 }

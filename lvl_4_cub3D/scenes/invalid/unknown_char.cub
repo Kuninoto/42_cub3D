@@ -1,7 +1,7 @@
-NO ./assets/background.xpm
-SO ./assets/background.xpm
-WE ./assets/background.xpm
-EA ./assets/background.xpm
+NO ./assets/foo.xpm
+SO ./assets/foo.xpm
+WE ./assets/foo.xpm
+EA ./assets/foo.xpm
 
 F 220,100,0
 C 0,30,4 

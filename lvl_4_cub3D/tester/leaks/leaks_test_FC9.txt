@@ -1,36 +1,36 @@
-==16869== Memcheck, a memory error detector
-==16869== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==16869== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==16869== Command: ../cub3D ./maps/test_FC9.cub
-==16869== Parent PID: 16613
-==16869== 
-==16869== 
-==16869== HEAP SUMMARY:
-==16869==     in use at exit: 284 bytes in 2 blocks
-==16869==   total heap usage: 357 allocs, 355 frees, 111,495 bytes allocated
-==16869== 
-==16869== 33 bytes in 1 blocks are still reachable in loss record 1 of 2
-==16869==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==16869==    by 0x110D8D: clean_printed (in /home/kuninoto/Desktop/42/lvl_4/cub3D/lvl_4_cub3D/cub3D)
-==16869==    by 0x1111BA: get_next_line (in /home/kuninoto/Desktop/42/lvl_4/cub3D/lvl_4_cub3D/cub3D)
-==16869==    by 0x10F8E4: is_scene_empty (in /home/kuninoto/Desktop/42/lvl_4/cub3D/lvl_4_cub3D/cub3D)
-==16869==    by 0x10F968: parse_scene (in /home/kuninoto/Desktop/42/lvl_4/cub3D/lvl_4_cub3D/cub3D)
-==16869==    by 0x1102D1: main (in /home/kuninoto/Desktop/42/lvl_4/cub3D/lvl_4_cub3D/cub3D)
-==16869== 
-==16869== 251 bytes in 1 blocks are still reachable in loss record 2 of 2
-==16869==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==16869==    by 0x110D8D: clean_printed (in /home/kuninoto/Desktop/42/lvl_4/cub3D/lvl_4_cub3D/cub3D)
-==16869==    by 0x1111BA: get_next_line (in /home/kuninoto/Desktop/42/lvl_4/cub3D/lvl_4_cub3D/cub3D)
-==16869==    by 0x10F7DB: get_textures_part (in /home/kuninoto/Desktop/42/lvl_4/cub3D/lvl_4_cub3D/cub3D)
-==16869==    by 0x10F98C: parse_scene (in /home/kuninoto/Desktop/42/lvl_4/cub3D/lvl_4_cub3D/cub3D)
-==16869==    by 0x1102D1: main (in /home/kuninoto/Desktop/42/lvl_4/cub3D/lvl_4_cub3D/cub3D)
-==16869== 
-==16869== LEAK SUMMARY:
-==16869==    definitely lost: 0 bytes in 0 blocks
-==16869==    indirectly lost: 0 bytes in 0 blocks
-==16869==      possibly lost: 0 bytes in 0 blocks
-==16869==    still reachable: 284 bytes in 2 blocks
-==16869==         suppressed: 0 bytes in 0 blocks
-==16869== 
-==16869== For lists of detected and suppressed errors, rerun with: -s
-==16869== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==39346== Memcheck, a memory error detector
+==39346== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==39346== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==39346== Command: ../cub3D ./maps/test_FC9.cub
+==39346== Parent PID: 39159
+==39346== 
+==39346== 
+==39346== HEAP SUMMARY:
+==39346==     in use at exit: 4 bytes in 2 blocks
+==39346==   total heap usage: 936 allocs, 934 frees, 125,403 bytes allocated
+==39346== 
+==39346== 2 bytes in 1 blocks are still reachable in loss record 1 of 2
+==39346==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==39346==    by 0x407318: clean_printed (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39346==    by 0x407004: get_next_line (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39346==    by 0x4038B0: is_scene_empty (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39346==    by 0x403786: parse_scene (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39346==    by 0x405DF8: main (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39346== 
+==39346== 2 bytes in 1 blocks are still reachable in loss record 2 of 2
+==39346==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==39346==    by 0x407318: clean_printed (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39346==    by 0x407004: get_next_line (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39346==    by 0x4039D6: get_textures_part (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39346==    by 0x4037BA: parse_scene (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39346==    by 0x405DF8: main (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39346== 
+==39346== LEAK SUMMARY:
+==39346==    definitely lost: 0 bytes in 0 blocks
+==39346==    indirectly lost: 0 bytes in 0 blocks
+==39346==      possibly lost: 0 bytes in 0 blocks
+==39346==    still reachable: 4 bytes in 2 blocks
+==39346==         suppressed: 0 bytes in 0 blocks
+==39346== 
+==39346== For lists of detected and suppressed errors, rerun with: -s
+==39346== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

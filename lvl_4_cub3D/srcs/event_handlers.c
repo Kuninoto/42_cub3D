@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_handlers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:16:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/13 20:47:52 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/14 18:28:50 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,18 @@ int	on_keyrelease(int key, t_data *this)
 	return (EXIT_SUCCESS);
 }
 
-int	on_mouseclick(int button, int x, int y, t_data *this)
-{	
-	(void)x;
-	(void)y;
-	(void)this;
-	printf("mousepress code = %d\n", button);
-	return (EXIT_SUCCESS);
+bool	assert_window_boundaries(t_data *this, int x,
+	int y, double *old_x)
+{
+	if (y != WIN_HEIGHT / 2)
+		mlx_mouse_move(this->mlx_ptr, this->win_ptr, x, WIN_HEIGHT / 2);
+	if (x <= 50 || x >= WIN_WIDTH - 50)
+	{
+		*old_x = WIN_WIDTH / 2;
+		mlx_mouse_move(this->mlx_ptr, this->win_ptr, WIN_WIDTH / 2, y);
+		return (true);
+	}
+	return (false);
 }
 
 int	mouse_handler(int x, int y, t_data *this)
@@ -63,10 +68,11 @@ int	mouse_handler(int x, int y, t_data *this)
 	double			distance;
 	static double	old_x = 0;
 
-	(void)y;
 	old_dir_x = this->camera.dir_x;
 	old_plane_x = this->camera.plane_x;
-	distance = (old_x - x) * 0.003;
+	if (assert_window_boundaries(this, x, y, &old_x))
+	return (EXIT_SUCCESS);
+	distance = (old_x - x) * 0.002;
 	old_x = x;
 	this->camera.dir_x = this->camera.dir_x * cos(distance)
 		- this->camera.dir_y * sin(distance);

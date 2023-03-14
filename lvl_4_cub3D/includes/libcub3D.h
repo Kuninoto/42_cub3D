@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libcub3D.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/13 19:42:43 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/14 17:39:27 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static inline int create_trgb(int t, int r, int g, int b) {
 
 void	draw_minimap(t_data *this);
 
-void 	a(t_data *this);
+void 	render_frame(t_data *this);
 void 	move_player(t_data *this);
 
 #endif // LIBCUB3D_H

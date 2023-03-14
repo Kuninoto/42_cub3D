@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 19:37:56 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/11 23:44:15 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:04:50 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static size_t	get_nbr_map_lines(char *file_name)
 {
-	int 	scene_fd;
+	int		scene_fd;
 	size_t	i;
 	size_t	count;
 	char	*line;
@@ -41,7 +41,7 @@ static size_t	get_nbr_map_lines(char *file_name)
 	return (count);
 }
 
-static char **get_textures_part(int scene_fd)
+static char	**get_textures_part(int scene_fd)
 {
 	char	**scene;
 	size_t	i;
@@ -108,7 +108,7 @@ bool	parse_scene(t_data *this, char *file_name)
 	bool	return_value;
 	int		scene_fd;
 	char	**textures_part;
-	char 	**map_part;
+	char	**map_part;
 
 	return_value = true;
 	scene_fd = open(file_name, O_RDONLY);
@@ -125,12 +125,11 @@ bool	parse_scene(t_data *this, char *file_name)
 		if (!parse_map(map_part, this))
 		{
 			free_matrix(map_part);
-			return_value = false;	
+			return_value = false;
 		}
 	}
 	if (return_value != false)
 		this->map = map_part;
-
 
 /* 	if (return_value != false)
 	{

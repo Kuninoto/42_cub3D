@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:54:19 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/14 15:50:23 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:38:30 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	destroy(t_data *this)
 	if (!this)
 		return ;
 	destroy_textures(this);
+	if (this->canvas.ptr)
+		mlx_destroy_image(this->mlx_ptr, this->canvas.ptr);
 	if (this->win_ptr)
 		mlx_destroy_window(this->mlx_ptr, this->win_ptr);
 	if (this->mlx_ptr)

@@ -6,39 +6,13 @@
 /*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/14 15:58:47 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:07:23 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libcub3D.h"
 
-void draw_vertical_line(t_data *this, size_t x, size_t drawStart, size_t drawEnd, size_t color)
-{
-	size_t i;
-
-	i = 0;
-	while (i < drawStart)
-	{
-		put_pixel_in_canvas(&this->canvas, x, i, 
-			create_trgb(256, this->textures.sky_rgb[0], this->textures.sky_rgb[1],
-			this->textures.sky_rgb[2]));
-		i += 1;
-	}
-	while (i < drawEnd)
-	{
-		mlx_pixel_put(this->mlx_ptr, this->win_ptr, x, drawStart + i, color);
-		i += 1;
-	}
-	while (i < WIN_HEIGHT)
-	{
-		put_pixel_in_canvas(&this->canvas, x, i, 
-			create_trgb(256, this->textures.floor_rgb[0], this->textures.sky_rgb[1],
-			this->textures.floor_rgb[2]));
-		i += 1;
-	}
-}
-
-void a(t_data *this)
+void	render_frame(t_data *this)
 {
 	this->canvas = new_img(this->mlx_ptr);
 
@@ -180,30 +154,29 @@ void a(t_data *this)
 			h2 += 1;
 		}
 	}
-	draw_minimap(this);
 	mlx_clear_window(this->mlx_ptr, this->win_ptr);
 	mlx_put_image_to_window(this->mlx_ptr, this->win_ptr, this->canvas.ptr, 0, 0);
 }
 
-int loop_hooks(t_data *this)
+int window_loop(t_data *this)
 {
 	move_player(this);
-	a(this);
+	render_frame(this);
+	draw_minimap(this);
 	mlx_destroy_image(this->mlx_ptr, this->canvas.ptr);
+	this->canvas.ptr = NULL;
 	return (EXIT_SUCCESS);
 }
 
 void	hooks(t_data *this)
 {
-	mlx_mouse_move(this->mlx_ptr, this->win_ptr, 
-		(this->camera.dir_x) + sin(this->camera.dir_y), WIN_HEIGHT / 2);
 	mlx_mouse_hide(this->mlx_ptr, this->win_ptr);
+	mlx_mouse_move(this->mlx_ptr, this->win_ptr, cos(this->camera.dir_x) + cos(this->camera.dir_y), (WIN_HEIGHT / 2));
 	mlx_hook(this->win_ptr, KEYPRESS_EVENT, (1L << 0), on_keypress, this);
 	mlx_hook(this->win_ptr, KEYRELEASE_EVENT, (1L << 1), on_keyrelease, this);
-	mlx_mouse_hook(this->win_ptr, on_mouseclick, this);
 	mlx_hook(this->win_ptr, MOTION_NOTIFY, (1L << 6), mouse_handler, this);
 	mlx_hook(this->win_ptr, DESTROY_NOTIFY_EVENT, (1L << 17), quit_cub3d, this);
-	mlx_loop_hook(this->mlx_ptr, loop_hooks, this);
+	mlx_loop_hook(this->mlx_ptr, window_loop, this);
 	mlx_loop(this->mlx_ptr);
 }
 

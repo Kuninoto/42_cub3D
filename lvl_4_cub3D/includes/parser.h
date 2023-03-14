@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 13:36:17 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/14 15:18:04 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:48:11 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,23 @@ bool	parse_textures(t_data *this, char **textures_part);
 bool	parse_scene(t_data *this, char *file_name);
 bool	save_player_info(char **map, t_data *this);
 
+bool	load_img(void *mlx_ptr, t_img *tex, char **coord_line);
+
 static inline void	init_player_pov(t_data *this)
 {
 	if (this->player.orientation == NORTH)
 	{
-		this->camera.plane_x = 0;
-		this->camera.plane_y = -1;
-		this->camera.dir_x = -1.0f;
-		this->camera.dir_y = 0.0f;
+		this->camera.plane_x = 0.66;
+		this->camera.plane_y = 0;
+		this->camera.dir_x = 0.0f;
+		this->camera.dir_y = 1.0f;
 	}
 	else if (this->player.orientation == SOUTH)
 	{
-		this->camera.plane_x = 0;
-		this->camera.plane_y = 1;
-		this->camera.dir_x = -1.0f;
-		this->camera.dir_y = 0.0f;
+		this->camera.plane_x = -0.66;
+		this->camera.plane_y = 0;
+		this->camera.dir_x = 0.0f;
+		this->camera.dir_y = -1.0f;
 	}
 	else if (this->player.orientation == EAST)
 	{

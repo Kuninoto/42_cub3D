@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:26:22 by roramos           #+#    #+#             */
-/*   Updated: 2023/03/13 19:06:17 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/14 18:41:36 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ static bool	assign_rgb(int *element_rgb, char **rgb)
 
 static bool	parse_rgb(char *identifier, int *rgb_arr, char **map)
 {
-	size_t	i;
+	int		i;
+	bool	return_value;
 	char	**temp;
 	char	**rgb;
-	bool	return_value;
 
-	i = 0;
+	i = -1;
 	return_value = true;
-	while (i < 6)
+	while (++i < 6)
 	{
 		temp = ft_split(map[i], ' ');
 		if (streq(identifier, temp[0]))
@@ -57,18 +57,16 @@ static bool	parse_rgb(char *identifier, int *rgb_arr, char **map)
 			free_matrix(temp);
 			return (return_value);
 		}
-		i += 1;
 		free_matrix(temp);
 	}	
 	return (false);
 }
 
-static bool	parse_coord(char *coord, void *mlx_ptr, t_img *texture , char **map)
+static bool	parse_coord(char *coord, void *mlx_ptr, t_img *texture, char **map)
 {
 	size_t		i;
 	char		**temp;
 	t_img		tex;
-	int			size;
 
 	i = 0;
 	while (i < 6)
@@ -81,14 +79,8 @@ static bool	parse_coord(char *coord, void *mlx_ptr, t_img *texture , char **map)
 				free_matrix(temp);
 				return (parser_panic(INVALID_NBR_OF_ATTRIBUTES));
 			}
-			tex.ptr = mlx_xpm_file_to_image(mlx_ptr, temp[1], &size, &size);
-			free_matrix(temp);
-			if (!tex.ptr)
-				return (parser_panic(OPEN_TEXTURE_ERR));
-			tex.addr = mlx_get_data_addr(tex.ptr, &tex.bpp,
-				&tex.line_len, &tex.endian);
-			if (!tex.addr)
-				return (parser_panic(GET_DATA_ADDR_ERR));
+			if (!load_img(mlx_ptr, &tex, temp))
+				return (false);
 			*texture = tex;
 			return (true);
 		}

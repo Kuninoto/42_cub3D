@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:09:06 by roramos           #+#    #+#             */
-/*   Updated: 2023/03/14 15:18:04 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:29:07 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ static bool	has_walls(char **map)
 
 bool	parse_map(char **map_part, t_data *this)
 {
-	if (!has_walls(map_part) || !valid_content(map_part) || !save_player_info(map_part, this))
+	if (!has_walls(map_part) || !valid_content(map_part)
+		|| !save_player_info(map_part, this))
 		return (false);
 	init_player_pov(this);
 	this->map_height = matrix_len(map_part);

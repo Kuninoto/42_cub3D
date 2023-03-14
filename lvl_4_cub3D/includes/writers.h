@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   writers.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:39:12 by roramos           #+#    #+#             */
-/*   Updated: 2023/03/02 12:16:41 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:38:20 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INLINES_H
-# define INLINES_H
+#ifndef WRITERS_H
+# define WRITERS_H
 
 # include <unistd.h>
 

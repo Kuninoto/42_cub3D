@@ -1,10 +1,9 @@
-NO ./assets/kiro_64x64.xpm
-SO ./assets/goofy_aaa_cao.xpm
-WE ./assets/goofy_aaa_porta.xpm
-EA ./assets/foo.xpm
-
-F 220,100,0
-C 0,30,4 
+NO ./assets/matrix.xpm
+F 0,0,0
+EA ./assets/matrix.xpm
+SO ./assets/matrix.xpm
+C 0,0,0 
+WE ./assets/matrix.xpm
 
 1111111111111111111111111
 1000000000110000000000001

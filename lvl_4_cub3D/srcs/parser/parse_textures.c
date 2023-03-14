@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:26:22 by roramos           #+#    #+#             */
-/*   Updated: 2023/03/14 18:41:36 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:17:58 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,9 @@ static bool	parse_rgb(char *identifier, int *rgb_arr, char **map)
 		if (streq(identifier, temp[0]))
 		{
 			if (matrix_len(temp) != 2)
-			{
-				free_matrix(temp);
-				return (parser_panic(INVALID_NBR_OF_ATTRIBUTES));
-			}
+				return_value = parser_panic(INVALID_NBR_OF_ATTRIBUTES);
 			rgb = ft_split(temp[1], ',');
-			if (!assign_rgb(rgb_arr, rgb))
+			if (return_value == true && !assign_rgb(rgb_arr, rgb))
 				return_value = false;
 			free_matrix(rgb);
 			free_matrix(temp);
@@ -92,17 +89,27 @@ static bool	parse_coord(char *coord, void *mlx_ptr, t_img *texture, char **map)
 
 bool	parse_textures(t_data *this, char **textures_part)
 {
-	if (!parse_coord("NO", this->mlx_ptr, &this->textures.north, textures_part))
-		return (false);
-	if (!parse_coord("SO", this->mlx_ptr, &this->textures.south, textures_part))
-		return (false);
-	if (!parse_coord("EA", this->mlx_ptr, &this->textures.east, textures_part))
-		return (false);
-	if (!parse_coord("WE", this->mlx_ptr, &this->textures.west, textures_part))
-		return (false);
-	if (!parse_rgb("C", this->textures.sky_rgb, textures_part))
-		return (false);
-	if (!parse_rgb("F", this->textures.floor_rgb, textures_part))
-		return (false);
-	return (true);
+	bool	return_value;
+
+	return_value = true;
+	if (return_value == true
+	&& !parse_coord("NO", this->mlx_ptr, &this->textures.north, textures_part))
+		return_value = false;
+	if (return_value == true
+		&& !parse_coord("SO", this->mlx_ptr, &this->textures.south, textures_part))
+		return_value = false;
+	if (return_value == true
+		&& !parse_coord("EA", this->mlx_ptr, &this->textures.east, textures_part))
+		return_value = false;
+	if (return_value == true &&
+		!parse_coord("WE", this->mlx_ptr, &this->textures.west, textures_part))
+		return_value = false;
+	if (return_value == true &&
+		!parse_rgb("C", this->textures.sky_rgb, textures_part))
+		return_value = false;
+	if (return_value == true &&
+		!parse_rgb("F", this->textures.floor_rgb, textures_part))
+		return_value = false;
+	free_matrix(textures_part);
+	return (return_value);
 }

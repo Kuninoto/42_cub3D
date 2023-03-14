@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_handlers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:16:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/14 18:28:50 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:45:23 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	mouse_handler(int x, int y, t_data *this)
 	old_dir_x = this->camera.dir_x;
 	old_plane_x = this->camera.plane_x;
 	if (assert_window_boundaries(this, x, y, &old_x))
-	return (EXIT_SUCCESS);
+		return (EXIT_SUCCESS);
 	distance = (old_x - x) * 0.002;
 	old_x = x;
 	this->camera.dir_x = this->camera.dir_x * cos(distance)

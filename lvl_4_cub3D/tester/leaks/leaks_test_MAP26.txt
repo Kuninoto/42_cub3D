@@ -1,15 +1,28 @@
-==17285== Memcheck, a memory error detector
-==17285== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==17285== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==17285== Command: ../cub3D ./maps/test_MAP26.cub
-==17285== Parent PID: 16613
-==17285== 
-==17285== 
-==17285== HEAP SUMMARY:
-==17285==     in use at exit: 0 bytes in 0 blocks
-==17285==   total heap usage: 521 allocs, 521 frees, 128,907 bytes allocated
-==17285== 
-==17285== All heap blocks were freed -- no leaks are possible
-==17285== 
-==17285== For lists of detected and suppressed errors, rerun with: -s
-==17285== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==39570== Memcheck, a memory error detector
+==39570== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==39570== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==39570== Command: ../cub3D ./maps/test_MAP26.cub
+==39570== Parent PID: 39159
+==39570== 
+==39570== 
+==39570== HEAP SUMMARY:
+==39570==     in use at exit: 2 bytes in 1 blocks
+==39570==   total heap usage: 2,038 allocs, 2,037 frees, 143,242 bytes allocated
+==39570== 
+==39570== 2 bytes in 1 blocks are still reachable in loss record 1 of 1
+==39570==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==39570==    by 0x407318: clean_printed (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39570==    by 0x407004: get_next_line (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39570==    by 0x403A3E: get_map_part (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39570==    by 0x4037F4: parse_scene (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39570==    by 0x405DF8: main (in /nfs/homes/roramos/.local/share/Trash/files/cub3d/cub3d/lvl_4_cub3D/cub3D)
+==39570== 
+==39570== LEAK SUMMARY:
+==39570==    definitely lost: 0 bytes in 0 blocks
+==39570==    indirectly lost: 0 bytes in 0 blocks
+==39570==      possibly lost: 0 bytes in 0 blocks
+==39570==    still reachable: 2 bytes in 1 blocks
+==39570==         suppressed: 0 bytes in 0 blocks
+==39570== 
+==39570== For lists of detected and suppressed errors, rerun with: -s
+==39570== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

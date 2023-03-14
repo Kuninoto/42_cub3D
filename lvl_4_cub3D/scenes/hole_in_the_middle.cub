@@ -1,7 +1,7 @@
-NO ./assets/kiro_64x64.xpm
-SO ./assets/background.xpm
-WE ./assets/kiro_64x64.xpm
-EA ./assets/kiro_64x64.xpm
+NO ./assets/n_flame_64x64.xpm
+SO ./assets/s_flame_64x64.xpm
+WE ./assets/w_flame_64x64.xpm
+EA ./assets/e_flame_64x64.xpm
 
 F 0,0,0
 C 0,0,0

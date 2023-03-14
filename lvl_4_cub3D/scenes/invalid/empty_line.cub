@@ -1,5 +1,5 @@
 NO ./assets/kiro_64x64.xpm
-SO ./assets/background.xpm
+SO ./assets/foo.xpm
 WE ./assets/kiro_64x64.xpm
 EA ./assets/kiro_64x64.xpm
 

@@ -1,8 +1,6 @@
-PLAYER:
-	Initial orientation
-
 NORM
 
-LEAKS:
-	on error runs 
+CHECK LEAKS:
+	fix gnl fixes (?)
+	on error runs
 	on sucessful runs

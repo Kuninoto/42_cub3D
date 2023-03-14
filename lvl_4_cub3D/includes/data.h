@@ -6,7 +6,7 @@
 /*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:34:03 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/13 18:56:10 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/14 20:45:50 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_camera
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-} 				t_camera;
+}				t_camera;
 
 typedef struct s_data
 {
@@ -55,6 +55,6 @@ typedef struct s_data
 	t_player	player;
 	t_camera	camera;
 	bool		wasd_movement[4];
-} 				t_data;
+}				t_data;
 
 #endif // DATA_H

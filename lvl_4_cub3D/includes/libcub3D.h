@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libcub3D.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/14 17:39:27 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:29:18 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 
 # include "libft.h"
 
-#ifdef OS_LINUX
-	# include "../mlx_linux/mlx.h"
-#else
-	# include "../mlx_macos/mlx.h"
-#endif // OS_LINUX
+# ifdef OS_LINUX
+#  include "../mlx_linux/mlx.h"
+# else
+#  include "../mlx_macos/mlx.h"
+# endif // OS_LINUX
 
 # include <stdint.h>
 # include <math.h>
 # include "data.h"
+# include "raycaster.h"
 # include "parser.h"
 # include "event_handlers.h"
 
@@ -31,7 +32,6 @@
 
 # define MLX_INIT_ERR "mlx_init() failed"
 # define WIN_INIT_ERR "mlx_new_window() failed"
-
 
 /* CONSTANTS */
 
@@ -64,13 +64,14 @@ static inline void	init_cub3d(t_data *this)
 	this->canvas = init_img();
 }
 
-static inline int create_trgb(int t, int r, int g, int b) {
+static inline int	create_trgb(int t, int r, int g, int b)
+{
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 void	draw_minimap(t_data *this);
 
-void 	render_frame(t_data *this);
-void 	move_player(t_data *this);
+void	render_frame(t_data *this);
+void	move_player(t_data *this);
 
 #endif // LIBCUB3D_H

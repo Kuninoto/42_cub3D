@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:26:22 by roramos           #+#    #+#             */
-/*   Updated: 2023/03/04 19:35:17 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/13 19:06:17 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,12 @@ static bool	parse_rgb(char *identifier, int *rgb_arr, char **map)
 	return (false);
 }
 
-static bool	parse_coord(char *coord, void *mlx_ptr, void **texture , char **map)
+static bool	parse_coord(char *coord, void *mlx_ptr, t_img *texture , char **map)
 {
-	size_t	i;
-	char	**temp;
-	int		size;
+	size_t		i;
+	char		**temp;
+	t_img		tex;
+	int			size;
 
 	i = 0;
 	while (i < 6)
@@ -80,10 +81,15 @@ static bool	parse_coord(char *coord, void *mlx_ptr, void **texture , char **map)
 				free_matrix(temp);
 				return (parser_panic(INVALID_NBR_OF_ATTRIBUTES));
 			}
-			*texture = mlx_xpm_file_to_image(mlx_ptr, temp[1], &size, &size);
+			tex.ptr = mlx_xpm_file_to_image(mlx_ptr, temp[1], &size, &size);
 			free_matrix(temp);
-			if (*texture == NULL)
+			if (!tex.ptr)
 				return (parser_panic(OPEN_TEXTURE_ERR));
+			tex.addr = mlx_get_data_addr(tex.ptr, &tex.bpp,
+				&tex.line_len, &tex.endian);
+			if (!tex.addr)
+				return (parser_panic(GET_DATA_ADDR_ERR));
+			*texture = tex;
 			return (true);
 		}
 		i += 1;
@@ -92,19 +98,19 @@ static bool	parse_coord(char *coord, void *mlx_ptr, void **texture , char **map)
 	return (false);
 }
 
-bool	parse_textures(t_data *this, char **map)
+bool	parse_textures(t_data *this, char **textures_part)
 {
-	if (!parse_coord("NO", this->mlx_ptr, &this->textures.north, map))
+	if (!parse_coord("NO", this->mlx_ptr, &this->textures.north, textures_part))
 		return (false);
-	if (!parse_coord("SO", this->mlx_ptr, &this->textures.south, map))
+	if (!parse_coord("SO", this->mlx_ptr, &this->textures.south, textures_part))
 		return (false);
-	if (!parse_coord("EA", this->mlx_ptr, &this->textures.east, map))
+	if (!parse_coord("EA", this->mlx_ptr, &this->textures.east, textures_part))
 		return (false);
-	if (!parse_coord("WE", this->mlx_ptr, &this->textures.west, map))
+	if (!parse_coord("WE", this->mlx_ptr, &this->textures.west, textures_part))
 		return (false);
-	if (!parse_rgb("C", this->textures.sky_rgb, map))
+	if (!parse_rgb("C", this->textures.sky_rgb, textures_part))
 		return (false);
-	if (!parse_rgb("F", this->textures.floor_rgb, map))
+	if (!parse_rgb("F", this->textures.floor_rgb, textures_part))
 		return (false);
 	return (true);
 }

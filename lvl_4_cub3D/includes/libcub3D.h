@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libcub3D.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/07 01:39:33 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/13 19:42:43 by roramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 	# include "../mlx_macos/mlx.h"
 #endif // OS_LINUX
 
-# include "math.h"
+# include <stdint.h>
+# include <math.h>
 # include "data.h"
 # include "parser.h"
 # include "event_handlers.h"
@@ -31,12 +32,18 @@
 # define MLX_INIT_ERR "mlx_init() failed"
 # define WIN_INIT_ERR "mlx_new_window() failed"
 
+
 /* CONSTANTS */
+
+# define WHITE 0xFFFAFA
+# define BLACK 0x000000
+# define YELLOW 0xFFFF00
+# define MINIMAP_SQUARES_PADDING 4
 
 bool	valid_args(int argc, char **argv);
 
-void	destroy(t_data *this);
 void	panic(char *error_msg, t_data *this);
+void	destroy(t_data *this);
 void	put_error(char *error_msg);
 
 static inline void	init_cub3d(t_data *this)
@@ -45,12 +52,25 @@ static inline void	init_cub3d(t_data *this)
 	if (!this->mlx_ptr)
 		panic(MLX_INIT_ERR, this);
 	this->win_ptr = NULL;
-	this->textures.north = NULL;
-	this->textures.south = NULL;
-	this->textures.east = NULL;
-	this->textures.west = NULL;
+	this->textures.north.ptr = NULL;
+	this->textures.south.ptr = NULL;
+	this->textures.east.ptr = NULL;
+	this->textures.west.ptr = NULL;
+	this->wasd_movement[0] = false;
+	this->wasd_movement[1] = false;
+	this->wasd_movement[2] = false;
+	this->wasd_movement[3] = false;
 	this->map = NULL;
 	this->canvas = init_img();
 }
+
+static inline int create_trgb(int t, int r, int g, int b) {
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+void	draw_minimap(t_data *this);
+
+void 	a(t_data *this);
+void 	move_player(t_data *this);
 
 #endif // LIBCUB3D_H

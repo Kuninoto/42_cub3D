@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:19:46 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/07 01:20:27 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:26:46 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@
 // EVENTS
 
 # define KEYPRESS_EVENT 2
+# define KEYRELEASE_EVENT 3
 # define MOTION_NOTIFY 6
 # define DESTROY_NOTIFY_EVENT 17
 

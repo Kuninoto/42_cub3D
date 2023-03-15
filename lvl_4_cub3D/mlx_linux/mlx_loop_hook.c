@@ -8,11 +8,7 @@
 ** Last update Fri Feb 23 17:11:39 2001 Charlie Root
 */
 
-
 #include	"mlx_int.h"
-
-
-
 
 int	mlx_loop_hook(t_xvar *xvar,int (*funct)(),void *param)
 {

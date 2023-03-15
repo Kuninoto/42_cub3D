@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:33:11 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/15 19:32:21 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/15 20:18:38 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	point_rays(t_data *this, t_raycaster *rc)
 	else
 	{
 		rc->step_x = 1;
-		rc->side_dist_x = (rc->map_x + 1.0f - this->player.orientation)
+		rc->side_dist_x = (rc->map_x + 1.0f - this->player.x)
 			* rc->delta_dist_x;
 	}
 	if (rc->ray_dir_y > 0)
@@ -66,10 +66,10 @@ void	find_wall_height(t_raycaster *rc)
 	else
 		rc->perp_wall_dist = rc->side_dist_y - rc->delta_dist_y;
 	rc->line_height = (int)(WIN_HEIGHT / rc->perp_wall_dist);
-	rc->draw_start = (-rc->line_height / 2) + (WIN_HEIGHT / 2);
+	rc->draw_start = -rc->line_height / 2 + WIN_HEIGHT / 2;
 	if (rc->draw_start < 0)
 		rc->draw_start = 0;
-	rc->draw_end = (rc->line_height / 2) + (WIN_HEIGHT / 2);
+	rc->draw_end = rc->line_height / 2 + WIN_HEIGHT / 2;
 	if (rc->draw_end >= WIN_HEIGHT)
 		rc->draw_end = WIN_HEIGHT - 1;
 }

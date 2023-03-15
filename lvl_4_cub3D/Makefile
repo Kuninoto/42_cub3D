@@ -12,17 +12,19 @@ endif
 
 LIBFT = ./libft/libft.a
 LINK = -I./includes
-VPATH = srcs srcs/parser
+VPATH = srcs srcs/parser srcs/render_frame
 RM = rm -rf
 NAME = cub3D
 
-TEST_FILE = scenes/coord_walls_map.cub
+TEST_FILE = scenes/alter.cub
 
 PARSER = load_img parse_textures parse_map parse_scene save_player_info init_player_pov
-GENERAL = valid_args draw_minimap move_player event_handlers destroy panic put_error\
+RENDER_FRAME = raycaster render_frame
+GENERAL = valid_args move_player event_handlers destroy panic put_error\
 		  main
 
 SRCS = $(addsuffix .c, $(PARSER))\
+	   $(addsuffix .c, $(RENDER_FRAME))\
 	   $(addsuffix .c, $(GENERAL))
 
 OBJ_DIR = obj

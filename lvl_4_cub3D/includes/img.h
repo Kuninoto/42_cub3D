@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:53:37 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/14 20:45:09 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/15 19:03:30 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ static inline t_img	new_img(void *mlx_ptr)
 	return (new_img);
 }
 
-static inline void	put_pixel_in_canvas(t_img *img, int x, int y, int color)
+static inline void	put_pixel_in_canvas(t_img *img, int x, int y,
+	uint32_t color)
 {
 	char	*dst;
 

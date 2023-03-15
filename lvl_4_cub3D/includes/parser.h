@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 13:36:17 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/14 21:02:19 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/15 19:12:30 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@
 
 # define OPEN_TEXTURE_ERR "failed to open texture file"
 # define OPEN_SCENE_ERR "error while opening the scene file\n\
-	This can happen because the file doesn't exist or is empty"
+This can happen because the file doesn't exist or is empty"
 # define GET_DATA_ADDR_ERR "mlx_get_data_addr() failed"
 
-# define INVALID_NBR_OF_ATTRIBUTES "exceeded amount of element attributes"
+// MAP MISCONFIGURATION ERRORS
+
+# define MANDATORY_SCENE_ELEMENT_MISSING "mandatory scene element missing"
+# define INVALID_NBR_OF_ATTRIBUTES "invalid amount of element attributes"
 # define INVALID_RGB_VALUES "invalid RGB values"
 # define RGB_OUT_OF_BOUNDS "RGB value out of bounds [0, 255]"
 # define EMPTY_SCENE_ERR "scene's file is empty"

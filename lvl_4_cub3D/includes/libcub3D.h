@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libcub3D.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roramos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:18:36 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/14 21:29:18 by roramos          ###   ########.fr       */
+/*   Updated: 2023/03/15 19:33:44 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # endif // OS_LINUX
 
 # include <stdint.h>
-# include <math.h>
 # include "data.h"
 # include "raycaster.h"
 # include "parser.h"
@@ -32,13 +31,6 @@
 
 # define MLX_INIT_ERR "mlx_init() failed"
 # define WIN_INIT_ERR "mlx_new_window() failed"
-
-/* CONSTANTS */
-
-# define WHITE 0xFFFAFA
-# define BLACK 0x000000
-# define YELLOW 0xFFFF00
-# define MINIMAP_SQUARES_PADDING 4
 
 bool	valid_args(int argc, char **argv);
 
@@ -69,9 +61,7 @@ static inline int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void	draw_minimap(t_data *this);
-
-void	render_frame(t_data *this);
 void	move_player(t_data *this);
+void	render_frame(t_data *this);
 
 #endif // LIBCUB3D_H

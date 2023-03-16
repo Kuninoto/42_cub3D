@@ -16,7 +16,7 @@ VPATH = srcs srcs/parser srcs/render_frame
 RM = rm -rf
 NAME = cub3D
 
-TEST_FILE = scenes/invalid/invalid_rgb2.cub
+TEST_FILE = scenes/coord_walls_map.cub
 
 PARSER = load_img parse_textures parse_map parse_scene save_player_info init_player_pov
 RENDER_FRAME = raycaster render_frame

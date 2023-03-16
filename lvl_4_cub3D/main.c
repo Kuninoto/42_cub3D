@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:21:06 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/03/15 20:01:13 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:31:54 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	window_loop(t_data *this)
 	return (EXIT_SUCCESS);
 }
 
+//	mlx_mouse_hide(this->mlx_ptr, this->win_ptr);
 void	hook_and_run(t_data *this)
 {
-//	mlx_mouse_hide(this->mlx_ptr, this->win_ptr);
 	mlx_mouse_move(this->mlx_ptr, this->win_ptr,
 		cos(this->camera.dir_x) + cos(this->camera.dir_y), (WIN_HEIGHT / 2));
 	mlx_hook(this->win_ptr, KEYPRESS_EVENT, (1L << 0), on_keypress, this);

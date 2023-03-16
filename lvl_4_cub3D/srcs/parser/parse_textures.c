@@ -6,7 +6,7 @@
 /*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:26:22 by roramos           #+#    #+#             */
-/*   Updated: 2023/03/15 19:09:28 by nnuno-ca         ###   ########.fr       */
+/*   Updated: 2023/03/16 14:13:06 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,7 @@ bool	parse_textures(t_data *this, char **textures_part)
 		&& parse_rgb("F", this->textures.floor_rgb, textures_part))
 		return_value = true;
 	free_matrix(textures_part);
-	return (return_value);
+	if (return_value == false)
+		return (parser_panic(MANDATORY_SCENE_ELEMENT_MISSING));
+	return (true);
 }

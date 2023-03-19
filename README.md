@@ -5,6 +5,7 @@
 ## Grade: 115/100
 
 ###  Demonstration:
+![](./extras/showcase.gif)
 
 ### Installing and running cub3D:
 1- Clone this repository:  
@@ -19,7 +20,37 @@
 	make clean
 4- Run cub3D with your desired map
 
-	./cub3D scenes/<map_that_you_want>.cub
+	./cub3D scenes/<map_of_your_choice>.cub
+
+### Controls:
+	ESC - Quit cub3D
+	WASD / Arrows - Player movement
+	Mouse - Change Player's POV 
+
+### Creating new scenes:
+
+	Scene elements:
+		'NO' - North texture file path;
+		'SO' - South texture file path;
+		'EA' - East texture file path;
+		'WE' - West texture file path;
+
+		'F' - Floor color in RGB;
+		'C' - Ceiling color in RGB;
+	Map:
+		'0' - Free space;  
+		'1' - Wall;  
+		'N', 'S', 'E', 'W' - Player's starting position
+		(and which coordinate he will spawn facing);  
+
+	To be valid a scene must respect the following:
+		- Be in .cub file extension;
+		- All textures must be 64x64 and in .xpm file extension;  
+	And it's map must:
+		- Be composed only by valid characters;  
+		- Be closed by walls;  
+		- Contain only one Player;  
+	(You can check examples of valid scenes on 42_cub3D/lvl_4_cub3D/scenes);
 
 ###  Subject: [cub3D en_subject](./extras/en.subject_cub3D.pdf)
 
@@ -29,10 +60,13 @@
 `make fclean` - deletes cub3D and all object files  
 `make re` - fclean + all  
 
-## NOTES for 42 Students:
+## NOTE:
+macOS is not properly supported. We've added conditional compilation and mlx for it (which do not have some functions that Linux has) for development and test purposes 
+
+## NOTE for 42 students:
 mlx_mouse_hide() has memory leaks product of the mlx library, you can't in any way solve them.  
 So that's why running this cub3D on a sucessful run with valgrind outputs exactly 28,772 still reachable bytes in 293 blocks.
-If you would wish to check valgrind without the boycotted memory leakage comment mlx_mouse_hide() on line 26 of main.c
+If you wish to check valgrind without the boycotted memory leakage comment mlx_mouse_hide() on line 26 of main.c
 
 ## Useful links
 https://en.wikipedia.org/wiki/Ray_casting  

@@ -1,7 +1,7 @@
-NO ./foo.cub
-SO ./foo.cub
-WE ./foo.cub
-EA ./foo.cub
+NO ./foo.xpm
+SO ./foo.xpm
+WE ./foo.xpm
+EA ./foo.xpm
 
 F 220,100,0
 C 225,30,0

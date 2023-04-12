@@ -31,7 +31,7 @@ static inline void	ft_putchar_fd(char c, int fd)
 }
 
 /**
- * @brief Writes str into fd
+ * @brief Writes <str> to <fd>
  * 
  * @param str String to write
  * @param fd File descriptor to write to
@@ -44,7 +44,7 @@ static inline void	ft_putstr_fd(char *str, int fd)
 }
 
 /**
- * @brief Writes str, followed by a newline, into fd
+ * @brief Writes <str>, followed by a newline, to <fd>
  * 
  * @param str String to write
  * @param fd  File descriptor to write to

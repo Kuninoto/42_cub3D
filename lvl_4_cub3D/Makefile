@@ -1,6 +1,6 @@
 OS = $(shell uname)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g #-Ofast
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
 ifeq ($(OS), Linux)
 	CFLAGS += -D OS_LINUX
@@ -20,12 +20,12 @@ TEST_FILE = scenes/matrix_corridor.cub
 
 PARSER = load_img parse_textures parse_map parse_scene save_player_info init_player_pov
 RENDER_FRAME = raycaster render_frame
-GENERAL = valid_args move_player event_handlers destroy panic put_error\
-		  main
+GENERAL = valid_args move_player event_handlers destroy panic put_error
 
 SRCS = $(addsuffix .c, $(PARSER))\
 	   $(addsuffix .c, $(RENDER_FRAME))\
-	   $(addsuffix .c, $(GENERAL))
+	   $(addsuffix .c, $(GENERAL))\
+	   main.c
 
 OBJ_DIR = obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)

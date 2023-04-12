@@ -8,17 +8,20 @@
 ![](./extras/showcase.gif)
 
 ### Installing and running cub3D:
-1- Clone this repository:  
+1- Installing mlx dependencies
+
+	sudo apt-get install make xorg libxext-dev zlib1g-dev libbsd-dev
+2- Clone this repository:  
 
 	git clone https://github.com/Kuninoto/42_cub3D
-2- Navigate to _lvl_4_cub3D_ and run `make`
+3- Navigate to _lvl_4_cub3D_ and run `make`
 
 	cd 42_cub3D/lvl_4_cub3D
 	make
-3- `make clean` so that you don't keep those object files that you won't need anymore  
+4- `make clean` so that you don't keep those object files that you won't need anymore  
 
 	make clean
-4- Run cub3D with your desired map
+5- Run cub3D with your desired map
 
 	./cub3D scenes/<map_of_your_choice>.cub
 
@@ -69,9 +72,9 @@ So that's why running this cub3D on a sucessful run with valgrind outputs exactl
 If you wish to check valgrind without the boycotted memory leakage comment mlx_mouse_hide() on line 26 of main.c
 
 ## Useful links
-https://en.wikipedia.org/wiki/Ray_casting  
-https://lodev.org/cgtutor/raycasting.html  
-https://harm-smits.github.io/42docs/  
+[What is Raycasting?](https://en.wikipedia.org/wiki/Ray_casting)  
+[Raycasting implementation](https://lodev.org/cgtutor/raycasting.html)  
+[Mlx documentation](https://harm-smits.github.io/42docs/)  
 
 ## Disclaimer
 > At [42School](https://en.wikipedia.org/wiki/42_(school)), almost every project must be written in accordance to the [Norm](./extras/en_norm.pdf), the schools' coding standard. As a result, the implementation of certain parts may appear strange and for sure had room for improvement.

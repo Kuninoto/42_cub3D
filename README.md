@@ -8,7 +8,7 @@
 ![](./extras/showcase.gif)
 
 ### Installing and running cub3D:
-1- Installing mlx dependencies
+1- Installing dependencies
 
 	sudo apt-get install make xorg libxext-dev zlib1g-dev libbsd-dev
 2- Clone this repository:  
@@ -16,8 +16,7 @@
 	git clone https://github.com/Kuninoto/42_cub3D
 3- Navigate to _lvl_4_cub3D_ and run `make`
 
-	cd 42_cub3D/lvl_4_cub3D
-	make
+	cd 42_cub3D/lvl_4_cub3D && make
 4- `make clean` so that you don't keep those object files that you won't need anymore  
 
 	make clean
@@ -44,12 +43,12 @@
 		'0' - Free space;  
 		'1' - Wall;  
 		'N', 'S', 'E', 'W' - Player's starting position
-		(and which coordinate he will spawn facing);  
+		(and which coordinate he will be facing at spawn);  
 
-	To be valid a scene must respect the following:
+	To be valid, a scene must respect the following:
 		- Be in .cub file extension;
 		- All textures must be 64x64 and in .xpm file extension;  
-	And it's map must:
+	The map must:
 		- Be composed only by valid characters;  
 		- Be closed by walls;  
 		- Contain only one Player;  
@@ -64,7 +63,7 @@
 `make re` - fclean + all  
 
 ## NOTE:
-macOS is not properly supported. We've added conditional compilation and mlx for it (which do not have some functions that Linux has) for development and test purposes 
+This project was developed for Linux. Although we've added conditional compilation and mlx for macOS (which do not have some functions that Linux has), it was for development and test purposes.  
 
 ## NOTE for 42 students:
 mlx_mouse_hide() has memory leaks product of the mlx library, you can't in any way solve them.  

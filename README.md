@@ -2,11 +2,15 @@
 
 #### Project done in collaboration with [Rodrigo Ramos](https://github.com/ramos21rodrigo)  
 
-## Grade: 115/100  
-
 ### Demonstration  
 
 ![](./extras/showcase.gif)
+
+## Description  
+
+Very basic 3D graphical representation of the inside of a maze from a first-person perspective using [Ray casting](https://en.wikipedia.org/wiki/Ray_casting) - introduction to 3D graphics programming.
+
+## Grade: 115/100  
 
 ### Installing and running cub3D  
 

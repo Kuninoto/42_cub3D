@@ -1,7 +1,7 @@
-OS = $(shell uname)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
+OS = $(shell uname)
 ifeq ($(OS), Linux)
 	CFLAGS += -D OS_LINUX
 	MLX_FLAGS = -L ./mlx_linux -lmlx -Ilmlx_linux -lXext -lX11 -lbsd
